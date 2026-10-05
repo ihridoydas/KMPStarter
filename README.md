@@ -40,6 +40,7 @@ Kickstart your **Kotlin Multiplatform (KMP)** development with this KMPStarter. 
 
 Explore shared logic, components, and documentation:
 
+- [Production Architecture](/documentation/architecture/KmpTemplate_Production_Architecture.md) for architectural guidelines and large-team setup.
 - [Essential KMP Tasks](/documentation/EssentialTasks.md) - **Start here** for platform-specific commands.
 - [Ktlint](/documentation/StaticAnalysis.md) for code formatting.
 - [Detekt](/documentation/StaticAnalysis.md) for code smells.
