@@ -27,8 +27,8 @@ package template
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
-import template.navigation.impl.initKoin
 import template.core.datastore.local.dataStoreContext
+import template.navigation.impl.initKoin
 
 class BaseApp : Application() {
     override fun onCreate() {

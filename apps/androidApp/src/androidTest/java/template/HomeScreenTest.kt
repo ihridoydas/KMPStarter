@@ -36,11 +36,11 @@ import org.koin.compose.KoinContext
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.dsl.module
-import template.feature.home.screens.HomeScreen
+import template.core.datastore.local.theme.ThemeLocalDataStore
+import template.core.designsystem.screens.HomeScreen
+import template.core.model.theme.ThemeMode
 import template.navigation.api.Navigator
 import template.navigation.api.ScreenDestinations
-import template.core.datastore.local.theme.ThemeLocalDataStore
-import template.core.datastore.local.theme.ThemeMode
 
 class HomeScreenTest {
     @get:Rule

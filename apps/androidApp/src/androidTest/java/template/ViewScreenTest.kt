@@ -29,7 +29,7 @@ import androidx.compose.ui.test.onNodeWithText
 import org.junit.Rule
 import org.junit.Test
 import org.koin.compose.KoinContext
-import template.feature.home.screens.ViewScreen
+import template.core.designsystem.screens.ViewScreen
 
 class ViewScreenTest {
     @get:Rule

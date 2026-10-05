@@ -55,3 +55,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
+
+tasks.withType<Test>().configureEach {
+    failOnNoDiscoveredTests.set(false)
+}
