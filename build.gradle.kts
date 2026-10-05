@@ -2,6 +2,7 @@ import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import java.io.File
 
 plugins {
     alias(libs.plugins.android.application) apply false
@@ -69,4 +70,36 @@ tasks.register<io.gitlab.arturbosch.detekt.Detekt>("detektAll") {
     exclude("**/build/**")
     config.setFrom(project.layout.projectDirectory.file("config/detekt/detekt.yml"))
     buildUponDefaultConfig = false
+}
+
+allprojects {
+    afterEvaluate {
+        val wasmLockFile = layout.buildDirectory.file("wasm/package-lock.json").get().asFile
+        wasmLockFile.parentFile.mkdirs()
+        if (!wasmLockFile.exists()) {
+            wasmLockFile.writeText("{}")
+        }
+    }
+
+    tasks.matching { it.name.contains("UpgradePackageLock") || it.name.contains("LockStoreTask") }.configureEach {
+        val task = this
+        try {
+            val inputFileProp = task.javaClass.methods.firstOrNull { it.name == "getInputFile" }
+            val inputFile = inputFileProp?.invoke(task)
+            val file = when (inputFile) {
+                is File -> inputFile
+                is org.gradle.api.file.RegularFile -> inputFile.asFile
+                is org.gradle.api.provider.Provider<*> -> (inputFile.orNull as? org.gradle.api.file.RegularFile)?.asFile
+                else -> null
+            }
+            file?.let {
+                it.parentFile?.mkdirs()
+                if (!it.exists()) {
+                    it.writeText("{}")
+                }
+            }
+        } catch (_: Exception) {
+            // Ignore reflection errors if method signature changes
+        }
+    }
 }
