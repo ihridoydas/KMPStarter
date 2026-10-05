@@ -3,7 +3,7 @@ import java.util.regex.Matcher
 
 /**
  * ----------------------------------------------------------------------------
- * KmpTemplate SETUP CONFIGURATION
+ * KMPStarter SETUP CONFIGURATION
  * ----------------------------------------------------------------------------
  * Update these values to customize your project.
  * Then run: ./gradlew renameTemplate
@@ -207,7 +207,7 @@ tasks.register('replaceTemplateReferences') {
         }
 
         // Project settings
-        replaceTextInFile("${rootDir}/settings.gradle.kts", "rootProject.name = \"KmpTemplate\"", "rootProject.name = \"${renameConfig.newTemplateName}\"")
+        replaceTextInFile("${rootDir}/settings.gradle.kts", "rootProject.name = \"KMPStarter\"", "rootProject.name = \"${renameConfig.newTemplateName}\"")
         
         // Root build.gradle.kts
         def rootGradle = new File("${rootDir}/build.gradle.kts")
@@ -216,8 +216,8 @@ tasks.register('replaceTemplateReferences') {
         }
 
         // Extra UI and Resources
-        replaceTextInFile("${rootDir}/app/src/main/res/values/strings.xml", ">KmpTemplate<", ">${renameConfig.newTemplateName}<")
-        replaceTextInFile("${rootDir}/common/src/wasmJsMain/resources/index.html", "<title>KmpTemplate</title>", "<title>${renameConfig.newTemplateName}</title>")
+        replaceTextInFile("${rootDir}/app/src/main/res/values/strings.xml", ">KMPStarter<", ">${renameConfig.newTemplateName}<")
+        replaceTextInFile("${rootDir}/common/src/wasmJsMain/resources/index.html", "<title>KMPStarter</title>", "<title>${renameConfig.newTemplateName}</title>")
         
         // Catch all remaining "template." strings in Kotlin/Java files (e.g. fully qualified names in code)
         fileTree(dir: rootDir, include: ["**/*.kt", "**/*.java", "**/*.kts"]).each { file ->
@@ -235,11 +235,11 @@ tasks.register('replaceTemplateReferences') {
         // Documentation/READMEs
         def readmes = ["README.md", "README_jp.md", "README_bd.md", "README_in.md"]
         readmes.each { readme ->
-            replaceTextInFile("${rootDir}/${readme}", "# KmpTemplate", "# ${renameConfig.newTemplateName}")
-            replaceTextInFile("${rootDir}/${readme}", "## Why KmpTemplate?", "## Why ${renameConfig.newTemplateName}?")
-            replaceTextInFile("${rootDir}/${readme}", "## なぜ KmpTemplate？", "## なぜ ${renameConfig.newTemplateName}？")
-            replaceTextInFile("${rootDir}/${readme}", "## কেন KmpTemplate?", "## কেন ${renameConfig.newTemplateName}?")
-            replaceTextInFile("${rootDir}/${readme}", "## KmpTemplate क्यों?", "## ${renameConfig.newTemplateName} क्यों?")
+            replaceTextInFile("${rootDir}/${readme}", "# KMPStarter", "# ${renameConfig.newTemplateName}")
+            replaceTextInFile("${rootDir}/${readme}", "## Why KMPStarter?", "## Why ${renameConfig.newTemplateName}?")
+            replaceTextInFile("${rootDir}/${readme}", "## なぜ KMPStarter？", "## なぜ ${renameConfig.newTemplateName}？")
+            replaceTextInFile("${rootDir}/${readme}", "## কেন KMPStarter?", "## কেন ${renameConfig.newTemplateName}?")
+            replaceTextInFile("${rootDir}/${readme}", "## KMPStarter क्यों?", "## ${renameConfig.newTemplateName} क्यों?")
         }
     }
 }
@@ -360,7 +360,7 @@ tasks.register('renameTemplate') {
             "cleanupSetup"
     )
     doLast {
-        println("✅ KmpTemplate successfully converted to ${renameConfig.newTemplateAppId}")
+        println("✅ KMPStarter successfully converted to ${renameConfig.newTemplateAppId}")
         println("🚀 Next steps: Re-sync Gradle and run ./gradlew clean build")
     }
 }

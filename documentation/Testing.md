@@ -1,4 +1,4 @@
-# Testing Strategy in KmpTemplate
+# Testing Strategy in KMPStarter
 
 This project uses a unified testing strategy to ensure that both business logic and UI components work correctly across all supported platforms (Android, iOS, Desktop, and Web).
 

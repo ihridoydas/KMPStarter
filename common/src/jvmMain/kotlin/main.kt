@@ -37,7 +37,7 @@ fun main() {
         println("Koin initialization failed: ${e.message}")
     }
     application {
-        Window(onCloseRequest = ::exitApplication, title = "KmpTemplate") {
+        Window(onCloseRequest = ::exitApplication, title = "KMPStarter") {
             println("Rendering App...")
             App(
                 onLanguageChange = { code ->

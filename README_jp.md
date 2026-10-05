@@ -1,8 +1,8 @@
-# KmpTemplate
+# KMPStarter
 
 このGitHubリポジトリを使用して、**Kotlin Multiplatform (KMP)** 開発をスタートしましょう。[Hridoy Chandra Das](https://github.com/ihridoydas)によって設計され、Android、iOS、デスクトップ、およびWeb (Wasm) アプリケーションのための堅牢な出発点を提供します。
 
-## なぜ KmpTemplate？
+## なぜ KMPStarter？
 
 - **デフォルトでマルチプラットフォーム:** Android、iOS、デスクトップ、およびWeb向けの共有ロジックとUI (Compose Multiplatform)。
 - **意見を述べるツール:** 設定済みの依存関係管理、gitフック、コードフォーマッティング、静的解析など、開発を向上させるためのツールが含まれています。

@@ -1,8 +1,8 @@
-# KmpTemplate
+# KMPStarter
 
-Kickstart your **Kotlin Multiplatform (KMP)** development with this KmpTemplate. Designed by [Hridoy Chandra Das](https://github.com/ihridoydas), it provides a robust starting point for Android, iOS, Desktop, and Web (Wasm) applications.
+Kickstart your **Kotlin Multiplatform (KMP)** development with this KMPStarter. Designed by [Hridoy Chandra Das](https://github.com/ihridoydas), it provides a robust starting point for Android, iOS, Desktop, and Web (Wasm) applications.
 
-## Why KmpTemplate?
+## Why KMPStarter?
 
 - **Multiplatform by Default:** Shared logic and UI (Compose Multiplatform) for Android, iOS, Desktop, and Web.
 - **Full Testing Suite:** Logic and UI tests run cross-platform (Android via Robolectric, iOS, JVM, Web). See [Testing Strategy](documentation/Testing.md).
