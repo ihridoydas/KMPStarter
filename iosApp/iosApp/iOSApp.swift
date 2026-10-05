@@ -1,10 +1,10 @@
 import SwiftUI
-import common
+import navigationImpl
 
 @main
 struct iOSApp: App {
     init() {
-        KoinModulesKt.doInitKoin()
+        AppKt.doInitKoin()
     }
 
     var body: some Scene {
