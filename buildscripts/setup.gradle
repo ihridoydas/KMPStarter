@@ -30,56 +30,36 @@ def renameConfig = [
  * AUTO FIX: PROJECT PATH CHANGE CLEAN
  * --------------------------------------------
  */
-def projectRootMarker = file("${rootDir}/.projectRootPath")
-def currentPath = rootDir.absolutePath
-
 def performDeepClean = {
-    println "⚠️ Performing deep clean of stale Gradle caches and build artifacts..."
-    
-    // Stop Gradle daemons to release file locks
+    println "⚠️ Performing deep clean of build artifacts..."
+
+    // Delete root build folder
     try {
-        exec { commandLine "./gradlew", "--stop" }
+        ant.delete(dir: "${rootDir}/build")
     } catch (Exception e) {
-        println "  (Could not stop daemons automatically, proceeding...)"
+        println "  (Could not remove ${rootDir}/build: ${e.message})"
     }
 
-    // Delete root caches and build (failonerror: false to avoid locking errors during running Gradle daemon)
-    ant.delete(dir: "${rootDir}/.gradle", failonerror: false)
-    ant.delete(dir: "${rootDir}/build", failonerror: false)
-
-    // Deep clean: find and delete all 'build', '.kotlin', and module '.gradle' folders
+    // Deep clean: find and delete all 'build' and '.kotlin' folders
     def cleanRecursive
     cleanRecursive = { File dir ->
         if (!dir.exists()) return
         dir.eachDir { subDir ->
             if (subDir.name == "build" || subDir.name == ".kotlin") {
                 println "  - Removing: ${subDir}"
-                ant.delete(dir: subDir, failonerror: false)
-            } else if (subDir.name == ".gradle") {
-                println "  - Skipping locked active Gradle cache directory: ${subDir}"
-            } else if (subDir.name != ".git" && subDir.name != ".idea") {
+                try {
+                    ant.delete(dir: subDir)
+                } catch (Exception e) {
+                    println "  (Could not remove ${subDir}: ${e.message})"
+                }
+            } else if (subDir.name != ".git" && subDir.name != ".idea" && subDir.name != ".gradle") {
                 cleanRecursive(subDir)
             }
         }
     }
     cleanRecursive(file(rootDir))
-    println "✅ Deep clean completed. Please re-sync the project."
+    println "✅ Deep clean completed."
 }
-
-if (projectRootMarker.exists()) {
-    def oldPath = projectRootMarker.text.trim()
-    def isPathDifferent = false
-    try {
-        isPathDifferent = (new File(oldPath).canonicalPath != new File(currentPath).canonicalPath)
-    } catch (Exception e) {
-        isPathDifferent = (oldPath != currentPath)
-    }
-    if (isPathDifferent) {
-        println "⚠️ Project folder moved from ${oldPath} to ${currentPath}"
-        performDeepClean()
-    }
-}
-projectRootMarker.text = currentPath
 
 tasks.register("deepClean") {
     group = "Template Setup"
@@ -92,7 +72,7 @@ tasks.register("deepClean") {
 tasks.register("checkProjectPathChange") {
     group = "Template Setup"
     doLast {
-        println "✅ Project path is up to date: ${currentPath}"
+        println "✅ Project path is up to date: ${rootDir.absolutePath}"
     }
 }
 
