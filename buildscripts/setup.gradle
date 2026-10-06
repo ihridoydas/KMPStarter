@@ -43,18 +43,20 @@ def performDeepClean = {
         println "  (Could not stop daemons automatically, proceeding...)"
     }
 
-    // Delete root caches and build
-    ant.delete(dir: "${rootDir}/.gradle")
-    ant.delete(dir: "${rootDir}/build")
+    // Delete root caches and build (failonerror: false to avoid locking errors during running Gradle daemon)
+    ant.delete(dir: "${rootDir}/.gradle", failonerror: false)
+    ant.delete(dir: "${rootDir}/build", failonerror: false)
 
     // Deep clean: find and delete all 'build', '.kotlin', and module '.gradle' folders
     def cleanRecursive
     cleanRecursive = { File dir ->
         if (!dir.exists()) return
         dir.eachDir { subDir ->
-            if (subDir.name == "build" || subDir.name == ".kotlin" || subDir.name == ".gradle") {
+            if (subDir.name == "build" || subDir.name == ".kotlin") {
                 println "  - Removing: ${subDir}"
-                ant.delete(dir: subDir)
+                ant.delete(dir: subDir, failonerror: false)
+            } else if (subDir.name == ".gradle") {
+                println "  - Skipping locked active Gradle cache directory: ${subDir}"
             } else if (subDir.name != ".git" && subDir.name != ".idea") {
                 cleanRecursive(subDir)
             }
@@ -66,7 +68,13 @@ def performDeepClean = {
 
 if (projectRootMarker.exists()) {
     def oldPath = projectRootMarker.text.trim()
-    if (oldPath != currentPath) {
+    def isPathDifferent = false
+    try {
+        isPathDifferent = (new File(oldPath).canonicalPath != new File(currentPath).canonicalPath)
+    } catch (Exception e) {
+        isPathDifferent = (oldPath != currentPath)
+    }
+    if (isPathDifferent) {
         println "⚠️ Project folder moved from ${oldPath} to ${currentPath}"
         performDeepClean()
     }
