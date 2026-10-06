@@ -24,21 +24,15 @@
 */
 package template.server
 
-import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application
-import io.ktor.server.application.call
-import io.ktor.server.application.install
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
-import io.ktor.server.plugins.calllogging.CallLogging
-import io.ktor.server.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.server.response.respond
-import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
-import kotlinx.serialization.Serializable
-
-@Serializable
-data class HealthResponse(val status: String, val message: String)
+import template.server.plugins.configureMonitoring
+import template.server.plugins.configureSerialization
+import template.server.routes.healthRoutes
+import template.server.routes.itemRoutes
+import template.server.routes.swaggerRoutes
 
 fun main() {
     embeddedServer(Netty, port = 8080, host = "0.0.0.0", module = Application::module)
@@ -46,27 +40,12 @@ fun main() {
 }
 
 fun Application.module() {
-    install(ContentNegotiation) {
-        json()
-    }
-    install(CallLogging)
+    configureSerialization()
+    configureMonitoring()
 
     routing {
-        get("/health") {
-            call.respond(
-                HealthResponse(
-                    status = "UP",
-                    message = "KMPStarter server is running successfully",
-                ),
-            )
-        }
-        get("/") {
-            call.respond(
-                HealthResponse(
-                    status = "OK",
-                    message = "Welcome to KMPStarter Ktor Backend Server",
-                ),
-            )
-        }
+        healthRoutes()
+        swaggerRoutes()
+        itemRoutes()
     }
 }
