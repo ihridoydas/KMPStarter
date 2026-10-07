@@ -49,6 +49,14 @@ Start the backend server:
 ```
 Open **[http://localhost:8080/docs](http://localhost:8080/docs)** in your browser for the interactive Swagger UI API documentation.
 
+## Generating API Documentation (Dokka)
+
+Generate unified multi-module API documentation for all shared libraries and core modules:
+```bash
+./gradlew dokkaGenerate
+```
+View the generated documentation site in **`dokkaDocs/index.html`**.
+
 ## Project Structure
 
 - `:apps:androidApp`: Android application module.

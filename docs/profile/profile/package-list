@@ -1,7 +1,0 @@
-$dokka.format:html-v1
-$dokka.linkExtension:html
-$dokka.location:template.feature.profile////PointingToDeclaration/profile/template.feature.profile/index.html
-$dokka.location:template.feature.profile//ProfileScreen/#template.navigation.api.Navigator/PointingToDeclaration/profile/template.feature.profile/-profile-screen.html
-$dokka.location:template.feature.profile/ProfileViewModel///PointingToDeclaration/profile/template.feature.profile/-profile-view-model/index.html
-$dokka.location:template.feature.profile/ProfileViewModel/ProfileViewModel/#/PointingToDeclaration/profile/template.feature.profile/-profile-view-model/-profile-view-model.html
-template.feature.profile

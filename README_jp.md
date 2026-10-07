@@ -45,6 +45,14 @@
 ```
 ブラウザで **[http://localhost:8080/docs](http://localhost:8080/docs)** を開くと、インタラクティブなSwagger UIドキュメントを確認できます。
 
+## APIドキュメントの生成 (Dokka)
+
+全共有ライブラリおよびコアモジュールの統合マルチモジュールAPIドキュメントを生成します：
+```bash
+./gradlew dokkaGenerate
+```
+生成されたドキュメントサイトは **`dokkaDocs/index.html`** で確認できます。
+
 ## プロジェクト構造
 
 - `:apps:androidApp`: Androidアプリケーションモジュール。

@@ -1,7 +1,0 @@
-$dokka.format:html-v1
-$dokka.linkExtension:html
-$dokka.location:template.feature.settings////PointingToDeclaration/settings/template.feature.settings/index.html
-$dokka.location:template.feature.settings//SettingsScreen/#template.navigation.api.Navigator/PointingToDeclaration/settings/template.feature.settings/-settings-screen.html
-$dokka.location:template.feature.settings/SettingsViewModel///PointingToDeclaration/settings/template.feature.settings/-settings-view-model/index.html
-$dokka.location:template.feature.settings/SettingsViewModel/SettingsViewModel/#/PointingToDeclaration/settings/template.feature.settings/-settings-view-model/-settings-view-model.html
-template.feature.settings

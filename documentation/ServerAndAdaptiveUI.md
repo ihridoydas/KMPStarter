@@ -6,21 +6,17 @@ This guide provides comprehensive developer instructions for the Ktor Backend Se
 
 ## 1. Generating API Documentation with Dokka
 
-Dokka generates rich HTML API documentation from your Kotlin source code and KDoc comments.
+Dokka generates rich, unified HTML API documentation from your Kotlin source code and KDoc comments.
 
 ### Commands
-- **Generate for all modules:**
+- **Generate unified documentation for all modules:**
   ```bash
   ./gradlew dokkaGenerate
   ```
-- **Generate for a specific module (e.g., Design System):**
-  ```bash
-  ./gradlew :core:designsystem:dokkaGenerate
-  ```
 
 ### Output Location
-Generated HTML files are saved in each module's build directory:
-- `[module-path]/build/docs/[module-name]/index.html` (e.g., `core/designsystem/build/docs/designsystem/index.html`)
+Dokka automatically generates a unified multi-module documentation site in the project root:
+- **`dokkaDocs/index.html`** (Unified Master Index listing all modules, search bar, and interactive theme switcher)
 
 ---
 
