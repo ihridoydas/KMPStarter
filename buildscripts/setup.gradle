@@ -9,10 +9,12 @@ import java.util.regex.Matcher
  * Then run: ./gradlew renameTemplate
  */
 def renameConfig = [
+        // DO NOT CHANGE THESE
         templateName             : "template",
         templateAppId            : "template.app.id",
         templateMaterialThemeName: "TemplateTheme",
 
+        // MODIFY THE BELOW PROPERTIES
         newTemplateName          : "MyAwesomeApp",
         newTemplateAppId         : "com.example.app",
         newMaterialThemeName     : "AppTheme",
