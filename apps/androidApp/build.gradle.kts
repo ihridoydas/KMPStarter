@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlinter)
     alias(libs.plugins.sortDependencies)
-    alias(libs.plugins.dokka)
     alias(libs.plugins.protobuf)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)

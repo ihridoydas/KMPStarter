@@ -17,7 +17,7 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.sortDependencies) apply false
     alias(libs.plugins.kotlinter) apply false
-    alias(libs.plugins.dokka) apply false
+    alias(libs.plugins.dokka)
     alias(libs.plugins.protobuf) apply false
     alias(libs.plugins.gradle.versions) apply false
     alias(libs.plugins.spotless) apply false
@@ -28,15 +28,27 @@ apply(from = "buildscripts/setup.gradle")
 apply(from = "buildscripts/versionsplugin.gradle")
 apply(from = "spotless.gradle")
 
+extensions.configure<org.jetbrains.dokka.gradle.DokkaExtension>("dokka") {
+    dokkaPublications.configureEach {
+        outputDirectory.set(rootProject.layout.projectDirectory.dir("dokkaDocs"))
+    }
+}
+
 subprojects {
-    apply(plugin = "org.jetbrains.dokka")
-    
-    extensions.configure<org.jetbrains.dokka.gradle.DokkaExtension>("dokka") {
-        dokkaPublications.configureEach {
-            outputDirectory.set(layout.buildDirectory.dir("docs/${project.name}"))
+    if (!project.path.startsWith(":apps")) {
+        pluginManager.apply("org.jetbrains.dokka")
+        
+        rootProject.dependencies {
+            add("dokka", project)
         }
-        dokkaSourceSets.configureEach {
-            enableAndroidDocumentationLink.set(true)
+        
+        extensions.configure<org.jetbrains.dokka.gradle.DokkaExtension>("dokka") {
+            dokkaPublications.configureEach {
+                outputDirectory.set(rootProject.layout.projectDirectory.dir("dokkaDocs/${project.name}"))
+            }
+            dokkaSourceSets.configureEach {
+                enableAndroidDocumentationLink.set(true)
+            }
         }
     }
 

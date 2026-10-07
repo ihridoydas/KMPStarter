@@ -1,4 +1,4 @@
-apply plugin: "com.github.ben-manes.versions"
+pluginManager.apply("com.github.ben-manes.versions")
 
 def isNonStable = { String version ->
     def stableKeyword = ['RELEASE', 'FINAL', 'GA'].any { it -> version.toUpperCase().contains(it) }
