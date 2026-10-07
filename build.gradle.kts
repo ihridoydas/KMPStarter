@@ -34,7 +34,7 @@ subprojects {
         
         extensions.configure<org.jetbrains.dokka.gradle.DokkaExtension>("dokka") {
             dokkaPublications.configureEach {
-                outputDirectory.set(layout.buildDirectory.dir("docs/${project.name}"))
+                outputDirectory.set(rootProject.layout.projectDirectory.dir("docs/${project.name}"))
             }
             dokkaSourceSets.configureEach {
                 enableAndroidDocumentationLink.set(true)
