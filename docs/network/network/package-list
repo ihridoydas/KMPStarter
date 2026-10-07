@@ -1,0 +1,14 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:template.core.network////PointingToDeclaration/network/template.core.network/index.html
+$dokka.location:template.core.network//createHttpClient/#/PointingToDeclaration/network/template.core.network/create-http-client.html
+$dokka.location:template.core.network/ApiService///PointingToDeclaration/network/template.core.network/-api-service/index.html
+$dokka.location:template.core.network/ApiService/ApiService/#io.ktor.client.HttpClient/PointingToDeclaration/network/template.core.network/-api-service/-api-service.html
+$dokka.location:template.core.network/ApiService/getPosts/#/PointingToDeclaration/network/template.core.network/-api-service/get-posts.html
+$dokka.location:template.core.network/Post///PointingToDeclaration/network/template.core.network/-post/index.html
+$dokka.location:template.core.network/Post/Post/#kotlin.Int#kotlin.Int#kotlin.String#kotlin.String/PointingToDeclaration/network/template.core.network/-post/-post.html
+$dokka.location:template.core.network/Post/body/#/PointingToDeclaration/network/template.core.network/-post/body.html
+$dokka.location:template.core.network/Post/id/#/PointingToDeclaration/network/template.core.network/-post/id.html
+$dokka.location:template.core.network/Post/title/#/PointingToDeclaration/network/template.core.network/-post/title.html
+$dokka.location:template.core.network/Post/userId/#/PointingToDeclaration/network/template.core.network/-post/user-id.html
+template.core.network

@@ -1,0 +1,57 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:template.core.model.auth////PointingToDeclaration/model/template.core.model.auth/index.html
+$dokka.location:template.core.model.auth/AuthModel///PointingToDeclaration/model/template.core.model.auth/-auth-model/index.html
+$dokka.location:template.core.model.auth/AuthModel/AuthModel/#kotlin.String#kotlin.String/PointingToDeclaration/model/template.core.model.auth/-auth-model/-auth-model.html
+$dokka.location:template.core.model.auth/AuthModel/email/#/PointingToDeclaration/model/template.core.model.auth/-auth-model/email.html
+$dokka.location:template.core.model.auth/AuthModel/token/#/PointingToDeclaration/model/template.core.model.auth/-auth-model/token.html
+$dokka.location:template.core.model.auth/AuthState.Error///PointingToDeclaration/model/template.core.model.auth/-auth-state/-error/index.html
+$dokka.location:template.core.model.auth/AuthState.Error/Error/#kotlin.String/PointingToDeclaration/model/template.core.model.auth/-auth-state/-error/-error.html
+$dokka.location:template.core.model.auth/AuthState.Error/message/#/PointingToDeclaration/model/template.core.model.auth/-auth-state/-error/message.html
+$dokka.location:template.core.model.auth/AuthState.Idle///PointingToDeclaration/model/template.core.model.auth/-auth-state/-idle/index.html
+$dokka.location:template.core.model.auth/AuthState.Loading///PointingToDeclaration/model/template.core.model.auth/-auth-state/-loading/index.html
+$dokka.location:template.core.model.auth/AuthState.Success///PointingToDeclaration/model/template.core.model.auth/-auth-state/-success/index.html
+$dokka.location:template.core.model.auth/AuthState.Success/Success/#template.core.model.auth.AuthModel/PointingToDeclaration/model/template.core.model.auth/-auth-state/-success/-success.html
+$dokka.location:template.core.model.auth/AuthState.Success/auth/#/PointingToDeclaration/model/template.core.model.auth/-auth-state/-success/auth.html
+$dokka.location:template.core.model.auth/AuthState///PointingToDeclaration/model/template.core.model.auth/-auth-state/index.html
+$dokka.location:template.core.model.home////PointingToDeclaration/model/template.core.model.home/index.html
+$dokka.location:template.core.model.home/HomeModel///PointingToDeclaration/model/template.core.model.home/-home-model/index.html
+$dokka.location:template.core.model.home/HomeModel/HomeModel/#kotlin.String#kotlin.String/PointingToDeclaration/model/template.core.model.home/-home-model/-home-model.html
+$dokka.location:template.core.model.home/HomeModel/description/#/PointingToDeclaration/model/template.core.model.home/-home-model/description.html
+$dokka.location:template.core.model.home/HomeModel/title/#/PointingToDeclaration/model/template.core.model.home/-home-model/title.html
+$dokka.location:template.core.model.home/HomeState.Error///PointingToDeclaration/model/template.core.model.home/-home-state/-error/index.html
+$dokka.location:template.core.model.home/HomeState.Error/Error/#kotlin.String/PointingToDeclaration/model/template.core.model.home/-home-state/-error/-error.html
+$dokka.location:template.core.model.home/HomeState.Error/message/#/PointingToDeclaration/model/template.core.model.home/-home-state/-error/message.html
+$dokka.location:template.core.model.home/HomeState.Loading///PointingToDeclaration/model/template.core.model.home/-home-state/-loading/index.html
+$dokka.location:template.core.model.home/HomeState.Success///PointingToDeclaration/model/template.core.model.home/-home-state/-success/index.html
+$dokka.location:template.core.model.home/HomeState.Success/Success/#template.core.model.home.HomeModel/PointingToDeclaration/model/template.core.model.home/-home-state/-success/-success.html
+$dokka.location:template.core.model.home/HomeState.Success/data/#/PointingToDeclaration/model/template.core.model.home/-home-state/-success/data.html
+$dokka.location:template.core.model.home/HomeState///PointingToDeclaration/model/template.core.model.home/-home-state/index.html
+$dokka.location:template.core.model.language////PointingToDeclaration/model/template.core.model.language/index.html
+$dokka.location:template.core.model.language/Language.BENGALI///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}model/template.core.model.language/-language/-b-e-n-g-a-l-i/index.html
+$dokka.location:template.core.model.language/Language.ENGLISH///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}model/template.core.model.language/-language/-e-n-g-l-i-s-h/index.html
+$dokka.location:template.core.model.language/Language.JAPANESE///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}model/template.core.model.language/-language/-j-a-p-a-n-e-s-e/index.html
+$dokka.location:template.core.model.language/Language.SYSTEM///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}model/template.core.model.language/-language/-s-y-s-t-e-m/index.html
+$dokka.location:template.core.model.language/Language.UNKNOWN///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}model/template.core.model.language/-language/-u-n-k-n-o-w-n/index.html
+$dokka.location:template.core.model.language/Language///PointingToDeclaration/model/template.core.model.language/-language/index.html
+$dokka.location:template.core.model.language/Language/entries/#/PointingToDeclaration/model/template.core.model.language/-language/entries.html
+$dokka.location:template.core.model.language/Language/valueOf/#kotlin.String/PointingToDeclaration/model/template.core.model.language/-language/value-of.html
+$dokka.location:template.core.model.language/Language/values/#/PointingToDeclaration/model/template.core.model.language/-language/values.html
+$dokka.location:template.core.model.language/LanguageState///PointingToDeclaration/model/template.core.model.language/-language-state/index.html
+$dokka.location:template.core.model.language/LanguageState/LanguageState/#template.core.model.language.Language/PointingToDeclaration/model/template.core.model.language/-language-state/-language-state.html
+$dokka.location:template.core.model.language/LanguageState/language/#/PointingToDeclaration/model/template.core.model.language/-language-state/language.html
+$dokka.location:template.core.model.theme////PointingToDeclaration/model/template.core.model.theme/index.html
+$dokka.location:template.core.model.theme/ThemeMode.DARK///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}model/template.core.model.theme/-theme-mode/-d-a-r-k/index.html
+$dokka.location:template.core.model.theme/ThemeMode.LIGHT///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}model/template.core.model.theme/-theme-mode/-l-i-g-h-t/index.html
+$dokka.location:template.core.model.theme/ThemeMode.SYSTEM///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}model/template.core.model.theme/-theme-mode/-s-y-s-t-e-m/index.html
+$dokka.location:template.core.model.theme/ThemeMode///PointingToDeclaration/model/template.core.model.theme/-theme-mode/index.html
+$dokka.location:template.core.model.theme/ThemeMode/entries/#/PointingToDeclaration/model/template.core.model.theme/-theme-mode/entries.html
+$dokka.location:template.core.model.theme/ThemeMode/valueOf/#kotlin.String/PointingToDeclaration/model/template.core.model.theme/-theme-mode/value-of.html
+$dokka.location:template.core.model.theme/ThemeMode/values/#/PointingToDeclaration/model/template.core.model.theme/-theme-mode/values.html
+$dokka.location:template.core.model.theme/ThemeState///PointingToDeclaration/model/template.core.model.theme/-theme-state/index.html
+$dokka.location:template.core.model.theme/ThemeState/ThemeState/#template.core.model.theme.ThemeMode/PointingToDeclaration/model/template.core.model.theme/-theme-state/-theme-state.html
+$dokka.location:template.core.model.theme/ThemeState/themeMode/#/PointingToDeclaration/model/template.core.model.theme/-theme-state/theme-mode.html
+template.core.model.auth
+template.core.model.home
+template.core.model.language
+template.core.model.theme

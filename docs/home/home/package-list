@@ -1,0 +1,22 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:template.feature.home.data.repository////PointingToDeclaration/home/template.feature.home.data.repository/index.html
+$dokka.location:template.feature.home.data.repository/HomeRepositoryImpl///PointingToDeclaration/home/template.feature.home.data.repository/-home-repository-impl/index.html
+$dokka.location:template.feature.home.data.repository/HomeRepositoryImpl/HomeRepositoryImpl/#/PointingToDeclaration/home/template.feature.home.data.repository/-home-repository-impl/-home-repository-impl.html
+$dokka.location:template.feature.home.data.repository/HomeRepositoryImpl/getHomeData/#/PointingToDeclaration/home/template.feature.home.data.repository/-home-repository-impl/get-home-data.html
+$dokka.location:template.feature.home.domain.repository////PointingToDeclaration/home/template.feature.home.domain.repository/index.html
+$dokka.location:template.feature.home.domain.repository/HomeRepository///PointingToDeclaration/home/template.feature.home.domain.repository/-home-repository/index.html
+$dokka.location:template.feature.home.domain.repository/HomeRepository/getHomeData/#/PointingToDeclaration/home/template.feature.home.domain.repository/-home-repository/get-home-data.html
+$dokka.location:template.feature.home.domain.usecase////PointingToDeclaration/home/template.feature.home.domain.usecase/index.html
+$dokka.location:template.feature.home.domain.usecase/GetHomeDataUseCase///PointingToDeclaration/home/template.feature.home.domain.usecase/-get-home-data-use-case/index.html
+$dokka.location:template.feature.home.domain.usecase/GetHomeDataUseCase/GetHomeDataUseCase/#template.feature.home.domain.repository.HomeRepository/PointingToDeclaration/home/template.feature.home.domain.usecase/-get-home-data-use-case/-get-home-data-use-case.html
+$dokka.location:template.feature.home.domain.usecase/GetHomeDataUseCase/invoke/#/PointingToDeclaration/home/template.feature.home.domain.usecase/-get-home-data-use-case/invoke.html
+$dokka.location:template.feature.home.presentation////PointingToDeclaration/home/template.feature.home.presentation/index.html
+$dokka.location:template.feature.home.presentation/HomeViewModel///PointingToDeclaration/home/template.feature.home.presentation/-home-view-model/index.html
+$dokka.location:template.feature.home.presentation/HomeViewModel/HomeViewModel/#template.feature.home.domain.usecase.GetHomeDataUseCase/PointingToDeclaration/home/template.feature.home.presentation/-home-view-model/-home-view-model.html
+$dokka.location:template.feature.home.presentation/HomeViewModel/loadData/#/PointingToDeclaration/home/template.feature.home.presentation/-home-view-model/load-data.html
+$dokka.location:template.feature.home.presentation/HomeViewModel/state/#/PointingToDeclaration/home/template.feature.home.presentation/-home-view-model/state.html
+template.feature.home.data.repository
+template.feature.home.domain.repository
+template.feature.home.domain.usecase
+template.feature.home.presentation

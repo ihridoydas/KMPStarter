@@ -1,0 +1,17 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:template.navigation.impl////PointingToDeclaration/impl/template.navigation.impl/index.html
+$dokka.location:template.navigation.impl//App/#kotlin.Function1[kotlin.String,kotlin.Unit]#kotlin.Function1[kotlin.Boolean,kotlin.Unit]/PointingToDeclaration/impl/template.navigation.impl/-app.html
+$dokka.location:template.navigation.impl//MainAnimationNavHost/#/PointingToDeclaration/impl/template.navigation.impl/-main-animation-nav-host.html
+$dokka.location:template.navigation.impl//MainViewController/#/PointingToDeclaration/impl/template.navigation.impl/-main-view-controller.html
+$dokka.location:template.navigation.impl//appModule/#/PointingToDeclaration/impl/template.navigation.impl/app-module.html
+$dokka.location:template.navigation.impl//authModule/#/PointingToDeclaration/impl/template.navigation.impl/auth-module.html
+$dokka.location:template.navigation.impl//coreDatastoreModule/#/PointingToDeclaration/impl/template.navigation.impl/core-datastore-module.html
+$dokka.location:template.navigation.impl//coreNetworkModule/#/PointingToDeclaration/impl/template.navigation.impl/core-network-module.html
+$dokka.location:template.navigation.impl//doInitKoin/#/PointingToDeclaration/impl/template.navigation.impl/do-init-koin.html
+$dokka.location:template.navigation.impl//featureSplashModule/#/PointingToDeclaration/impl/template.navigation.impl/feature-splash-module.html
+$dokka.location:template.navigation.impl//homeModule/#/PointingToDeclaration/impl/template.navigation.impl/home-module.html
+$dokka.location:template.navigation.impl//initKoin/#kotlin.Function1[org.koin.core.KoinApplication,kotlin.Unit]/PointingToDeclaration/impl/template.navigation.impl/init-koin.html
+$dokka.location:template.navigation.impl//profileModule/#/PointingToDeclaration/impl/template.navigation.impl/profile-module.html
+$dokka.location:template.navigation.impl//settingsModule/#/PointingToDeclaration/impl/template.navigation.impl/settings-module.html
+template.navigation.impl

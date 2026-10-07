@@ -1,0 +1,6 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:template.core.database////PointingToDeclaration/database/template.core.database/index.html
+$dokka.location:template.core.database/DatabasePlaceholder///PointingToDeclaration/database/template.core.database/-database-placeholder/index.html
+$dokka.location:template.core.database/DatabasePlaceholder/DatabasePlaceholder/#/PointingToDeclaration/database/template.core.database/-database-placeholder/-database-placeholder.html
+template.core.database

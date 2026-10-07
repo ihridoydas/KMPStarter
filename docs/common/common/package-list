@@ -1,0 +1,11 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:template.core.common////PointingToDeclaration/common/template.core.common/index.html
+$dokka.location:template.core.common/Constents///PointingToDeclaration/common/template.core.common/-constents/index.html
+$dokka.location:template.core.common/Constents/APP_NAME/#/PointingToDeclaration/common/template.core.common/-constents/-a-p-p_-n-a-m-e.html
+$dokka.location:template.core.common/LanguageManager///PointingToDeclaration/common/template.core.common/-language-manager/index.html
+$dokka.location:template.core.common/LanguageManager/currentLanguage/#/PointingToDeclaration/common/template.core.common/-language-manager/current-language.html
+$dokka.location:template.core.common/LanguageManager/init/#template.core.datastore.local.language.LanguageDataStore/PointingToDeclaration/common/template.core.common/-language-manager/init.html
+$dokka.location:template.core.common/LanguageManager/resetForTesting/#/PointingToDeclaration/common/template.core.common/-language-manager/reset-for-testing.html
+$dokka.location:template.core.common/LanguageManager/setLanguage/#template.core.model.language.Language/PointingToDeclaration/common/template.core.common/-language-manager/set-language.html
+template.core.common

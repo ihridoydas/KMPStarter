@@ -1,0 +1,6 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:template.core.testing////PointingToDeclaration/testing/template.core.testing/index.html
+$dokka.location:template.core.testing/BaseComposeTest///PointingToDeclaration/testing/template.core.testing/-base-compose-test/index.html
+$dokka.location:template.core.testing/BaseComposeTest/BaseComposeTest/#/PointingToDeclaration/testing/template.core.testing/-base-compose-test/-base-compose-test.html
+template.core.testing

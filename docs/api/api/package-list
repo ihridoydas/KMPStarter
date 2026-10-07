@@ -1,0 +1,12 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:template.navigation.api////PointingToDeclaration/api/template.navigation.api/index.html
+$dokka.location:template.navigation.api/Navigator///PointingToDeclaration/api/template.navigation.api/-navigator/index.html
+$dokka.location:template.navigation.api/Navigator/goBack/#/PointingToDeclaration/api/template.navigation.api/-navigator/go-back.html
+$dokka.location:template.navigation.api/Navigator/navigate/#template.navigation.api.ScreenDestinations/PointingToDeclaration/api/template.navigation.api/-navigator/navigate.html
+$dokka.location:template.navigation.api/ScreenDestinations.HomeScreen///PointingToDeclaration/api/template.navigation.api/-screen-destinations/-home-screen/index.html
+$dokka.location:template.navigation.api/ScreenDestinations.ProfileScreen///PointingToDeclaration/api/template.navigation.api/-screen-destinations/-profile-screen/index.html
+$dokka.location:template.navigation.api/ScreenDestinations.SettingsScreen///PointingToDeclaration/api/template.navigation.api/-screen-destinations/-settings-screen/index.html
+$dokka.location:template.navigation.api/ScreenDestinations.ViewScreen///PointingToDeclaration/api/template.navigation.api/-screen-destinations/-view-screen/index.html
+$dokka.location:template.navigation.api/ScreenDestinations///PointingToDeclaration/api/template.navigation.api/-screen-destinations/index.html
+template.navigation.api

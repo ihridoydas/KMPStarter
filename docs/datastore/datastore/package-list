@@ -1,0 +1,39 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:template.core.datastore.local.language////PointingToDeclaration/datastore/template.core.datastore.local.language/index.html
+$dokka.location:template.core.datastore.local.language/LanguageDataStore///PointingToDeclaration/datastore/template.core.datastore.local.language/-language-data-store/index.html
+$dokka.location:template.core.datastore.local.language/LanguageDataStore/getLanguage/#/PointingToDeclaration/datastore/template.core.datastore.local.language/-language-data-store/get-language.html
+$dokka.location:template.core.datastore.local.language/LanguageDataStore/setLanguage/#template.core.model.language.Language/PointingToDeclaration/datastore/template.core.datastore.local.language/-language-data-store/set-language.html
+$dokka.location:template.core.datastore.local.language/LanguageDataStoreImpl///PointingToDeclaration/datastore/template.core.datastore.local.language/-language-data-store-impl/index.html
+$dokka.location:template.core.datastore.local.language/LanguageDataStoreImpl/LanguageDataStoreImpl/#androidx.datastore.core.DataStore[template.core.model.language.LanguageState]/PointingToDeclaration/datastore/template.core.datastore.local.language/-language-data-store-impl/-language-data-store-impl.html
+$dokka.location:template.core.datastore.local.language/LanguageDataStoreImpl/getLanguage/#/PointingToDeclaration/datastore/template.core.datastore.local.language/-language-data-store-impl/get-language.html
+$dokka.location:template.core.datastore.local.language/LanguageDataStoreImpl/setLanguage/#template.core.model.language.Language/PointingToDeclaration/datastore/template.core.datastore.local.language/-language-data-store-impl/set-language.html
+$dokka.location:template.core.datastore.local.language/LanguageSerializer///PointingToDeclaration/datastore/template.core.datastore.local.language/-language-serializer/index.html
+$dokka.location:template.core.datastore.local.language/LanguageSerializer/defaultValue/#/PointingToDeclaration/datastore/template.core.datastore.local.language/-language-serializer/default-value.html
+$dokka.location:template.core.datastore.local.language/LanguageSerializer/readFrom/#okio.BufferedSource/PointingToDeclaration/datastore/template.core.datastore.local.language/-language-serializer/read-from.html
+$dokka.location:template.core.datastore.local.language/LanguageSerializer/writeTo/#template.core.model.language.LanguageState#okio.BufferedSink/PointingToDeclaration/datastore/template.core.datastore.local.language/-language-serializer/write-to.html
+$dokka.location:template.core.datastore.local.theme////PointingToDeclaration/datastore/template.core.datastore.local.theme/index.html
+$dokka.location:template.core.datastore.local.theme/ThemeLocalDataStore///PointingToDeclaration/datastore/template.core.datastore.local.theme/-theme-local-data-store/index.html
+$dokka.location:template.core.datastore.local.theme/ThemeLocalDataStore/setThemeMode/#template.core.model.theme.ThemeMode/PointingToDeclaration/datastore/template.core.datastore.local.theme/-theme-local-data-store/set-theme-mode.html
+$dokka.location:template.core.datastore.local.theme/ThemeLocalDataStore/themeMode/#/PointingToDeclaration/datastore/template.core.datastore.local.theme/-theme-local-data-store/theme-mode.html
+$dokka.location:template.core.datastore.local.theme/ThemeLocalDataStoreImpl///PointingToDeclaration/datastore/template.core.datastore.local.theme/-theme-local-data-store-impl/index.html
+$dokka.location:template.core.datastore.local.theme/ThemeLocalDataStoreImpl/ThemeLocalDataStoreImpl/#androidx.datastore.core.DataStore[template.core.model.theme.ThemeState]/PointingToDeclaration/datastore/template.core.datastore.local.theme/-theme-local-data-store-impl/-theme-local-data-store-impl.html
+$dokka.location:template.core.datastore.local.theme/ThemeLocalDataStoreImpl/setThemeMode/#template.core.model.theme.ThemeMode/PointingToDeclaration/datastore/template.core.datastore.local.theme/-theme-local-data-store-impl/set-theme-mode.html
+$dokka.location:template.core.datastore.local.theme/ThemeLocalDataStoreImpl/themeMode/#/PointingToDeclaration/datastore/template.core.datastore.local.theme/-theme-local-data-store-impl/theme-mode.html
+$dokka.location:template.core.datastore.local.theme/ThemeSerializer///PointingToDeclaration/datastore/template.core.datastore.local.theme/-theme-serializer/index.html
+$dokka.location:template.core.datastore.local.theme/ThemeSerializer/defaultValue/#/PointingToDeclaration/datastore/template.core.datastore.local.theme/-theme-serializer/default-value.html
+$dokka.location:template.core.datastore.local.theme/ThemeSerializer/readFrom/#okio.BufferedSource/PointingToDeclaration/datastore/template.core.datastore.local.theme/-theme-serializer/read-from.html
+$dokka.location:template.core.datastore.local.theme/ThemeSerializer/writeTo/#template.core.model.theme.ThemeState#okio.BufferedSink/PointingToDeclaration/datastore/template.core.datastore.local.theme/-theme-serializer/write-to.html
+$dokka.location:template.core.datastore.local////PointingToDeclaration/datastore/template.core.datastore.local/index.html
+$dokka.location:template.core.datastore.local//createDataStore/#kotlin.Function0[okio.Path]#androidx.datastore.core.okio.OkioSerializer[TypeParam(bounds=[kotlin.Any])]/PointingToDeclaration/datastore/template.core.datastore.local/create-data-store.html
+$dokka.location:template.core.datastore.local//dataStoreContext/#/PointingToDeclaration/datastore/template.core.datastore.local/data-store-context.html
+$dokka.location:template.core.datastore.local//producePath/#kotlin.String/PointingToDeclaration/datastore/template.core.datastore.local/produce-path.html
+$dokka.location:template.core.datastore.local//systemFileSystem/#/PointingToDeclaration/datastore/template.core.datastore.local/system-file-system.html
+$dokka.location:template.core.datastore////PointingToDeclaration/datastore/template.core.datastore/index.html
+$dokka.location:template.core.datastore/StorageComponent///PointingToDeclaration/datastore/template.core.datastore/-storage-component/index.html
+$dokka.location:template.core.datastore/StorageComponent/createLanguageDataStore/#/PointingToDeclaration/datastore/template.core.datastore/-storage-component/create-language-data-store.html
+$dokka.location:template.core.datastore/StorageComponent/createThemeDataStore/#/PointingToDeclaration/datastore/template.core.datastore/-storage-component/create-theme-data-store.html
+template.core.datastore
+template.core.datastore.local
+template.core.datastore.local.language
+template.core.datastore.local.theme

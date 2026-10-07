@@ -1,0 +1,9 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:template.core.platform////PointingToDeclaration/platform/template.core.platform/index.html
+$dokka.location:template.core.platform/PlatformUtils///PointingToDeclaration/platform/template.core.platform/-platform-utils/index.html
+$dokka.location:template.core.platform/PlatformUtils/changeLanguage/#kotlin.String/PointingToDeclaration/platform/template.core.platform/-platform-utils/change-language.html
+$dokka.location:template.core.platform/PlatformUtils/changeTheme/#kotlin.Boolean/PointingToDeclaration/platform/template.core.platform/-platform-utils/change-theme.html
+$dokka.location:template.core.platform/RootUtil///PointingToDeclaration/platform/template.core.platform/-root-util/index.html
+$dokka.location:template.core.platform/RootUtil/isDeviceRooted/#/PointingToDeclaration/platform/template.core.platform/-root-util/is-device-rooted.html
+template.core.platform
