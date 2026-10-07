@@ -34,7 +34,8 @@ object ItemRepository {
     init {
         // Seed initial demo data
         val id1 = idCounter.incrementAndGet()
-        itemStore[id1] = Item(id1, "KMPStarter Architecture", "Explore multiplatform clean architecture across Android, iOS, Desktop, and Web.")
+        itemStore[id1] =
+            Item(id1, "KMPStarter Architecture", "Explore multiplatform clean architecture across Android, iOS, Desktop, and Web.")
         val id2 = idCounter.incrementAndGet()
         itemStore[id2] = Item(id2, "Ktor REST API", "Build production-ready backend services with Kotlin and Ktor.")
     }
@@ -54,7 +55,7 @@ object ItemRepository {
         val existing = itemStore[id] ?: return null
         val updated = existing.copy(
             title = title?.trim() ?: existing.title,
-            description = description?.trim() ?: existing.description
+            description = description?.trim() ?: existing.description,
         )
         itemStore[id] = updated
         return updated

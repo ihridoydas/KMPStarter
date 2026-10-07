@@ -35,6 +35,12 @@ fun Route.healthRoutes() {
     }
 
     get("/") {
-        call.respond(mapOf("message" to "Welcome to KMPStarter REST API", "swaggerDocs" to "http://localhost:8080/docs", "openapiJson" to "http://localhost:8080/openapi.json"))
+        call.respond(
+            mapOf(
+                "message" to "Welcome to KMPStarter REST API",
+                "swaggerDocs" to "http://localhost:8080/docs",
+                "openapiJson" to "http://localhost:8080/openapi.json",
+            ),
+        )
     }
 }

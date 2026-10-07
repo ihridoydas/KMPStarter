@@ -19,12 +19,15 @@ def renameConfig = [
         newTemplateAppId         : "com.example.app",
         newMaterialThemeName     : "AppTheme",
 
-        // Toggle dependencies (Experimental KMP-aware removal)
+        // Toggle dependencies & form factors (Experimental KMP-aware removal)
         useKoin                  : true,
         useKtor                  : true,
         useRoomKmp               : true,
         useComposeMultiplatform  : true,
         useAndroidXR             : true,
+        useAndroidTV             : true,
+        useWearOS                : true,
+        useAndroidAutomotive     : true,
 ]
 
 /**
@@ -338,6 +341,32 @@ tasks.register('keepOrRemoveDependencies') {
                 removeTextFromFile(fileName, "compose.compiler")
             }
             if (!renameConfig.useAndroidXR) removeTextFromFile(fileName, "xr")
+            if (!renameConfig.useAndroidTV) removeTextFromFile(fileName, "tv")
+            if (!renameConfig.useWearOS) removeTextFromFile(fileName, "wear")
+            if (!renameConfig.useAndroidAutomotive) removeTextFromFile(fileName, "car")
+        }
+
+        // Smart source file deletion based on form factor toggles
+        def formFactorDir = file("${rootDir}/core/designsystem/src/commonMain/kotlin/template/core/designsystem/screens/formfactors")
+        if (formFactorDir.exists()) {
+            if (!renameConfig.useAndroidTV) {
+                delete("${formFactorDir}/TvScreen.kt")
+                println "🗑️ Removed TvScreen.kt (useAndroidTV = false)"
+            }
+            if (!renameConfig.useWearOS) {
+                delete("${formFactorDir}/WearOsScreen.kt")
+                println "🗑️ Removed WearOsScreen.kt (useWearOS = false)"
+            }
+            if (!renameConfig.useAndroidAutomotive) {
+                delete("${formFactorDir}/AutomotiveScreen.kt")
+                println "🗑️ Removed AutomotiveScreen.kt (useAndroidAutomotive = false)"
+            }
+            if (!renameConfig.useAndroidXR) {
+                delete("${formFactorDir}/XrScreen.kt")
+                delete("${rootDir}/core/designsystem/src/commonMain/kotlin/template/core/designsystem/components/SpatialWrapper.kt")
+                delete("${rootDir}/core/designsystem/src/androidMain/kotlin/template/core/designsystem/components/SpatialWrapper.android.kt")
+                println "🗑️ Removed XR classes and SpatialWrapper (useAndroidXR = false)"
+            }
         }
     }
 }

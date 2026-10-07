@@ -27,27 +27,13 @@ package template.server.data
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Item(
-    val id: Long,
-    val title: String,
-    val description: String,
-    val createdAt: Long = System.currentTimeMillis()
-)
+data class Item(val id: Long, val title: String, val description: String, val createdAt: Long = System.currentTimeMillis())
 
 @Serializable
-data class ItemCreateRequest(
-    val title: String,
-    val description: String
-)
+data class ItemCreateRequest(val title: String, val description: String)
 
 @Serializable
-data class ItemUpdateRequest(
-    val title: String? = null,
-    val description: String? = null
-)
+data class ItemUpdateRequest(val title: String? = null, val description: String? = null)
 
 @Serializable
-data class ErrorResponse(
-    val code: Int,
-    val message: String
-)
+data class ErrorResponse(val code: Int, val message: String)

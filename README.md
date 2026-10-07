@@ -1,29 +1,34 @@
 # KMPStarter
 
-Kickstart your **Kotlin Multiplatform (KMP)** development with this KMPStarter. Designed by [Hridoy Chandra Das](https://github.com/ihridoydas), it provides a robust starting point for Android, iOS, Desktop, and Web (Wasm) applications.
+Kickstart your **Kotlin Multiplatform (KMP)** development with KMPStarter. Designed by [Hridoy Chandra Das](https://github.com/ihridoydas), it provides a robust starting point for Android, iOS, Desktop, Web (Wasm), Backend, TV, Wear OS, Automotive, and XR applications.
 
 ## Why KMPStarter?
 
 - **Multiplatform by Default:** Shared logic and UI (Compose Multiplatform) for Android, iOS, Desktop, and Web.
-- **Full Testing Suite:** Logic and UI tests run cross-platform (Android via Robolectric, iOS, JVM, Web). See [Testing Strategy](documentation/Testing.md).
-- **Opinionated Tooling:** Configured dependency management, git hooks, code formatting, and static analysis for enhanced development.
-- **Smart Setup:** A custom script to rename your project, package IDs, and toggle essential KMP libraries in seconds.
+- **Universal Adaptive UI:** Single core UI that automatically adapts across Phones, Tablets, Foldables, Desktop, Web, TV, Wear OS, Automotive, and XR using window size constraints and `FormFactorMode`.
+- **Ktor Backend & Swagger UI:** Production-ready backend server (`:apps:serverApp`) with REST API and interactive Swagger UI documentation at `/docs`.
+- **Smart Setup & Form-Factor Toggles:** Custom script to rename project details and toggle libraries & form factors (`useAndroidTV`, `useWearOS`, `useAndroidAutomotive`, `useAndroidXR`) with intelligent dependency and source file cleanup.
+- **Multi-Language Localization:** Built-in support for English, Japanese, Bengali, and System default.
 
 ## Getting Started
 
 1. Click **"Use this template"** to create a repository under your account.
-2. Open `buildscripts/setup.gradle` and configure your project details:
+2. Open `buildscripts/setup.gradle` and configure your project details and form factors:
     ```groovy
     def renameConfig = [
         newTemplateName          : "MyAwesomeApp",    // Your project name
         newTemplateAppId         : "com.example.app", // Your package ID
         newMaterialThemeName     : "AppTheme",        // Your Material Theme name
 
-        // Toggle KMP libraries
+        // Toggle libraries & form factors
         useKoin                  : true,
         useKtor                  : true,
         useRoomKmp               : true,
         useComposeMultiplatform  : true,
+        useAndroidXR             : true,
+        useAndroidTV             : true,
+        useWearOS                : true,
+        useAndroidAutomotive     : true,
     ]
     ```
 3. Run the setup command in your terminal:
@@ -36,31 +41,21 @@ Kickstart your **Kotlin Multiplatform (KMP)** development with this KMPStarter. 
 - Bangla [Readme here](README_bd.md) 🇧🇩.
 - Hindi [Readme here](README_in.md) 🇮🇳.
 
-## What's Included
+## Running the Ktor Backend & Swagger UI
 
-Explore shared logic, components, and documentation:
-
-- [Production Architecture](/documentation/architecture/KmpTemplate_Production_Architecture.md) for architectural guidelines and large-team setup.
-- [Essential KMP Tasks](/documentation/EssentialTasks.md) - **Start here** for platform-specific commands.
-- [Ktlint](/documentation/StaticAnalysis.md) for code formatting.
-- [Detekt](/documentation/StaticAnalysis.md) for code smells.
-- [Git Hooks](/documentation/GitHooks.md) for pre-commit checks.
-- [GitHub Actions](/documentation/GitHubActions.md) for CI/CD.
-- [Dokka](/documentation/StaticAnalysis.md) for API documentation.
-- [Spotless](https://github.com/diffplug/spotless) & [sortDependencies](https://github.com/square/gradle-dependencies-sorter).
+Start the backend server:
+```bash
+./gradlew :apps:serverApp:run
+```
+Open **[http://localhost:8080/docs](http://localhost:8080/docs)** in your browser for the interactive Swagger UI API documentation.
 
 ## Project Structure
 
-- `:app`: Android-specific application module.
-- `:common`: The heart of your project. Contains shared UI (Compose) and business logic.
+- `:apps:androidApp`: Android application module.
+- `:apps:desktopApp`: Desktop application module.
+- `:apps:webApp`: Web application module.
+- `:apps:serverApp`: Ktor backend server with Swagger UI.
+- `:core:designsystem`: Shared Material 3 design system, adaptive UI, and form-factor screens.
+- `:core:common`: Shared utilities and language manager.
+- `:core:model` & `:core:network`: Shared DTOs, models, and Ktor client.
 - `:navigation`: Shared navigation configuration.
-- `:storage`: Shared local data handling (DataStore/Room).
-- `:theme`: Shared Material 3 design system.
-
-## CI/CD & Quality
-
-Uses [Danger](https://danger.systems) for PR checks. See [Dangerfile](Dangerfile). Ensure you set up a `DANGER_GITHUB_API_TOKEN` in GitHub Secrets.
-
-## Templates
-
-Includes [Pull Request Template](/.github/pull_request_template.md) for organized PR descriptions.

@@ -1,27 +1,34 @@
 # KMPStarter
 
-আপনার **Kotlin Multiplatform (KMP)** উন্নয়ন এই GitHub রিপোজিটরি দিয়ে শুরু করুন। [হৃদয় চন্দ্র দাস](https://github.com/ihridoydas) এর ডিজাইন করা এই প্রজেক্টটি Android, iOS, Desktop, এবং Web (Wasm) অ্যাপ্লিকেশনের জন্য একটি শক্তিশালী ভিত্তি প্রদান করে।
+আপনার **Kotlin Multiplatform (KMP)** উন্নয়ন এই GitHub রিপোজিটরি দিয়ে শুরু করুন। [হৃদয় চন্দ্র দাস](https://github.com/ihridoydas) এর ডিজাইন করা এই প্রজেক্টটি Android, iOS, Desktop, Web (Wasm), Backend, TV, Wear OS, Automotive, এবং XR অ্যাপ্লিকেশনের জন্য একটি শক্তিশালী ভিত্তি প্রদান করে।
 
 ## কেন KMPStarter?
 
 - **ডিফল্টভাবে মাল্টিপ্ল্যাটফর্ম:** Android, iOS, Desktop এবং Web-এর জন্য শেয়ার্ড লজিক এবং UI (Compose Multiplatform)।
-- **স্মার্ট সেটআপ:** আপনার প্রজেক্টের নাম, প্যাকেজ আইডি পরিবর্তন করার জন্য এবং প্রয়োজনীয় KMP লাইব্রেরিগুলো কয়েক সেকেন্ডে যুক্ত বা সরানোর জন্য একটি কাস্টম স্ক্রিপ্ট।
+- **ইউনিভার্সাল অ্যাডাপ্টিভ UI:** ফোন, ট্যাবলেট, ফোল্ডেবল, ডেস্কটপ, ওয়েব, টিভি, ওয়্যার ওএস, অটোমোটিভ এবং এক্সআর-এর জন্য উইন্ডো সাইজ এবং `FormFactorMode` ভিত্তিক স্বয়ংক্রিয় অ্যাডাপ্টিভ লেআউট।
+- **Ktor ব্যাকএন্ড ও Swagger UI:** `/docs`-এ ইন্টারেক্টিভ Swagger UI ডকুমেন্টেশনসহ প্রোডাকশন-রেডি ব্যাকএন্ড সার্ভার (`:apps:serverApp`)।
+- **স্মার্ট সেটআপ ও ফর্ম-ফ্যাক্টর টগল:** প্রজেক্ট রিনেম করার এবং ফর্ম-ফ্যাক্টর লাইব্রেরি টগল করার স্ক্রিপ্ট (`useAndroidTV`, `useWearOS`, `useAndroidAutomotive`, `useAndroidXR`), যা অটোমেটিক্যালি অদরকারী সোর্স ফাইল ও ডিপেন্ডেন্সি রিমूव করে।
+- **বহুভাষিক লোকলাইজেশন:** ইংরেজি, জাপানিজ, বাঙালি এবং সিস্টেম ডিফল্ট ভাষার বিল্ট-ইন সাপোর্ট।
 
 ## কিভাবে শুরু করবেন?
 
 ১. আপনার অ্যাকাউন্টে একটি রিপোজিটরি তৈরি করতে **"Use this template"** ক্লিক করুন।
-২. `buildscripts/setup.gradle` ফাইলটি খুলুন এবং আপনার প্রজেক্টের তথ্য কনফিগার করুন:
+২. `buildscripts/setup.gradle` ফাইলটি খুলুন এবং আপনার প্রজেক্টের তথ্য ও ফর্ম-ফ্যাক্টর কনফিগার করুন:
     ```groovy
     def renameConfig = [
         newTemplateName          : "MyAwesomeApp",    // আপনার প্রজেক্টের নাম
         newTemplateAppId         : "com.example.app", // আপনার প্যাকেজ আইডি
         newMaterialThemeName     : "AppTheme",        // আপনার মেটেরিয়াল থিমের নাম
 
-        // KMP লাইব্রেরি টগল করুন
+        // লাইব্রেরি ও ফর্ম-ফ্যাক্টর টগল করুন
         useKoin                  : true,
         useKtor                  : true,
         useRoomKmp               : true,
         useComposeMultiplatform  : true,
+        useAndroidXR             : true,
+        useAndroidTV             : true,
+        useWearOS                : true,
+        useAndroidAutomotive     : true,
     ]
     ```
 ৩. আপনার টার্মিনালে সেটআপ কমান্ডটি রান করুন:
@@ -30,21 +37,21 @@
     ```
 ৪. **Android Studio রিস্টার্ট করুন**, গ্রেডল সিঙ্ক করুন এবং আপনি বিল্ড করার জন্য প্রস্তুত!
 
-## কী অন্তর্ভুক্ত আছে
+## Ktor ব্যাকএন্ড এবং Swagger UI চালানো
 
-শেয়ার্ড লজিক, কম্পোনেন্ট এবং ডকুমেন্টেশন অন্বেষণ করুন:
-
-- [Essential KMP Tasks](/documentation/EssentialTasks.md) - প্ল্যাটফর্ম-নির্দিষ্ট কমান্ডের জন্য **এখান থেকে শুরু করুন**।
-- [Ktlint](/documentation/StaticAnalysis.md) কোড ফরম্যাটিং এর জন্য।
-- [Detekt](/documentation/StaticAnalysis.md) কোড স্মেলস এর জন্য।
-- [Git Hooks](/documentation/GitHooks.md) প্রি-কমিট চেক এর জন্য।
-- [GitHub Actions](/documentation/GitHubActions.md) CI/CD এর জন্য।
-- [Dokka](/documentation/StaticAnalysis.md) API ডকুমেন্টেশনের জন্য।
+ব্যাকএন্ড সার্ভার স্টার্ট করতে রান করুন:
+```bash
+./gradlew :apps:serverApp:run
+```
+ব্রাউজারে **[http://localhost:8080/docs](http://localhost:8080/docs)** ভিজিট করুন ইন্টারেক্টিভ Swagger UI দেখার জন্য।
 
 ## প্রজেক্ট স্ট্রাকচার
 
-- `:app`: Android-নির্দিষ্ট অ্যাপ্লিকেশন মডিউল।
-- `:common`: প্রজেক্টের মূল অংশ। এখানে শেয়ার্ড UI (Compose) এবং বিজনেস লজিক থাকে।
+- `:apps:androidApp`: অ্যান্ড্রয়েড অ্যাপ্লিকেশন মডিউল।
+- `:apps:desktopApp`: ডেস্কটপ অ্যাপ্লিকেশন মডিউল।
+- `:apps:webApp`: ওয়েব অ্যাপ্লিকেশন মডিউল।
+- `:apps:serverApp`: Swagger UI সহ Ktor ব্যাকএন্ড সার্ভার।
+- `:core:designsystem`: শেয়ার্ড Material 3 ডিজাইন সিস্টেম, অ্যাডাপ্টিভ UI এবং ফর্ম-ফ্যাক্টর স্ক্রিনসমূহ।
+- `:core:common`: শেয়ার্ড ইউটিলিটি এবং ল্যাঙ্গুয়েজ ম্যানেজার।
+- `:core:model` & `:core:network`: শেয়ার্ড DTO, মডেল এবং Ktor ক্লা라이언트।
 - `:navigation`: শেয়ার্ড নেভিগেশন কনফিগারেশন।
-- `:storage`: শেয়ার্ড লোকাল ডাটা হ্যান্ডলিং (DataStore/Room)।
-- `:theme`: শেয়ার্ড Material 3 ডিজাইন সিস্টেম।

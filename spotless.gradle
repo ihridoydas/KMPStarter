@@ -10,7 +10,7 @@ spotless {
     }
     kotlin {
         target "**/*.kt"
-        targetExclude "spotless/*.kt"
+        targetExclude "**/build/**/*.kt", "spotless/*.kt"
         trimTrailingWhitespace()
         ktlint().editorConfigOverride([
             "standard:filename": "disabled",
