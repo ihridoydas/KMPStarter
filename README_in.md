@@ -8,7 +8,29 @@
 - **यूनिवर्सल एडाप्टिव UI:** फोन, टैबलेट, डेस्कटॉप, वेब, टीवी, वियर ओएस, ऑटोमोटिव और XR के लिए विंडो साइज और `FormFactorMode` आधारित स्वचालित एडाप्टिव लेआउट।
 - **Ktor बैकएंड और Swagger UI:** `/docs` पर इंटरैक्टिव Swagger UI दस्तावेज़ीकरण के साथ प्रोडक्शन-रेडी बैकएंड सर्वर (`:apps:serverApp`)।
 - **स्मार्ट सेटअप और फॉर्म-फैक्टर टॉगल:** प्रोजेक्ट का नाम बदलने और फॉर्म-फैक्टर लाइब्रेरी टॉगल करने की स्क्रिप्ट (`useAndroidTV`, `useWearOS`, `useAndroidAutomotive`, `useAndroidXR`), जो ऑटोमैटिकली अप्रयुक्त सोर्स फाइल और डिपेंडेंसी हटा देती है।
-- **बहुभाषी समर्थन:** अंग्रेजी, जापानी, बंगाली और सिस्टम डिफ़ॉルト के लिए इन-बिल्ट समर्थन।
+- **बहुभाषी समर्थन:** अंग्रेजी, जापानी, बंगाली और सिस्टम डिफ़ॉल्ट के लिए इन-बिल्ट समर्थन।
+
+## आर्किटेक्चर
+
+यह प्रोजेक्ट **Clean Architecture** सिद्धांतों और **मॉड्यूलर मल्टीप्लेटफॉर्म लेयरिंग** रणनीति का पालन करता है:
+
+```text
+├── :apps               # प्लेटफॉर्म-विशिष्ट एंट्री पॉइंट (androidApp, desktopApp, webApp, serverApp)
+├── iosApp              # iOS स्विफ्ट एप्लिकेशन रैपर (Xcode प्रोजेक्ट और Compose Multiplatform)
+├── :feature            # पृथक फीचर मॉड्यूल (auth, home, profile, settings)
+├── :navigation         # टाइप-सेफ Navigation3 API और कार्यान्वयन
+└── :core               # फ़ाउंडेशन मॉड्यूल
+    ├── :core:designsystem # Material 3 थीम, कंपोनेंट्स और एडाप्टिव फॉर्म-फैक्टर UI
+    ├── :core:common       # यूटिलिटीज, LanguageManager और स्थिरांक
+    ├── :core:model        # साझा डोमेन मॉडल और DTO
+    ├── :core:network      # Ktor HTTP क्लाइंट और API सेवाएं
+    ├── :core:database     # Room KMP डेटाबेस और DAO
+    ├── :core:datastore    # टाइप-सेफ DataStore प्राथमिकताएं
+    ├── :core:platform     # प्लेटफॉर्म-विशिष्ट expect/actual अमूर्तन
+    └── :core:testing      # टेस्ट हार्नेस और मॉक्स
+```
+
+विस्तृत आर्किटेक्चर दिशानिर्देशों के लिए [प्रोडक्शन आर्किटेक्चर गाइड](documentation/architecture/KmpTemplate_Production_Architecture.md) पढ़ें।
 
 ## शुरुआत कैसे करें
 
@@ -52,14 +74,3 @@
 ./gradlew dokkaGenerate
 ```
 बनाई गई दस्तावेज़ीकरण साइट को **`dokkaDocs/index.html`** फ़ाइल में देखें।
-
-## प्रोजेक्ट संरचना
-
-- `:apps:androidApp`: एंड्रॉइड एप्लिकेशन मॉड्यूल।
-- `:apps:desktopApp`: डेस्कटॉप एप्लिकेशन मॉड्यूल।
-- `:apps:webApp`: वेब एप्लिकेशन मॉड्यूल।
-- `:apps:serverApp`: Swagger UI के साथ Ktor बैकएंड सर्वर।
-- `:core:designsystem`: साझा Material 3 डिज़ाइन सिस्टम, एडाप्टिव UI और फॉर्म-फैक्टर स्क्रीन।
-- `:core:common`: साझा यूटिलिटीज और लैंग्वेज मैनेजर।
-- `:core:model` & `:core:network`: साझा DTO, मॉडल और Ktor क्ला라이언트।
-- `:navigation`: साझा नेविгация कॉन्फ़िगरेशन।

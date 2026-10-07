@@ -10,6 +10,28 @@
 - **スマートセットアップ & フォームファクター切り替え:** プロジェクト名の変更や、ライブラリおよびフォームファクター (`useAndroidTV`, `useWearOS`, `useAndroidAutomotive`, `useAndroidXR`) のトグル設定、不要なソース・依存関係の自動削除。
 - **多言語対応:** 英語、日本語、ベンガル語、システムデフォルトの内蔵サポート。
 
+## アーキテクチャ
+
+このプロジェクトは **クリーンアーキテクチャ** 原則と **モジュール化マルチプラットフォームレイヤリング** 戦略に従っています：
+
+```text
+├── :apps               # プラットフォーム固有のエントリーポイント (androidApp, desktopApp, webApp, serverApp)
+├── iosApp              # iOS Swift アプリケーションラッパー (Xcode プロジェクト & Compose Multiplatform)
+├── :feature            # 独立した機能モジュール (auth, home, profile, settings)
+├── :navigation         # 型安全な Navigation3 API と実装
+└── :core               # 基盤モジュール
+    ├── :core:designsystem # Material 3 テーマ、コンポーネント、適応型フォームファクター UI
+    ├── :core:common       # ユーティリティ、LanguageManager、定数
+    ├── :core:model        # 共有ドメインモデル & DTO
+    ├── :core:network      # Ktor HTTP クライアント & API サービス
+    ├── :core:database     # Room KMP データベース & DAO
+    ├── :core:datastore    # 型安全な DataStore プリファレンス
+    ├── :core:platform     # プラットフォーム固有の expect/actual 抽象化
+    └── :core:testing      # テストハーネス & モック
+```
+
+詳細なアーキテクチャガイドラインについては、[プロダクションアーキテクチャガイド](documentation/architecture/KmpTemplate_Production_Architecture.md)を参照してください。
+
 ## スタートガイド
 
 1. **"このテンプレートを使用"**をクリックして、アカウントにリポジトリを作成します。
@@ -52,14 +74,3 @@
 ./gradlew dokkaGenerate
 ```
 生成されたドキュメントサイトは **`dokkaDocs/index.html`** で確認できます。
-
-## プロジェクト構造
-
-- `:apps:androidApp`: Androidアプリケーションモジュール。
-- `:apps:desktopApp`: デスクトップアプリケーションモジュール。
-- `:apps:webApp`: Webアプリケーションモジュール。
-- `:apps:serverApp`: Swagger UI付きKtorバックエンドサーバー。
-- `:core:designsystem`: 共有 Material 3 デザインシステム、適応型UI、フォームファクター画面。
-- `:core:common`: 共有ユーティリティと言語マネージャー。
-- `:core:model` & `:core:network`: 共有DTO、モデル、Ktorクライアント。
-- `:navigation`: 共有ナビゲーション設定。

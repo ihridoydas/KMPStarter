@@ -10,6 +10,33 @@ Kickstart your **Kotlin Multiplatform (KMP)** development with KMPStarter. Desig
 - **Smart Setup & Form-Factor Toggles:** Custom script to rename project details and toggle libraries & form factors (`useAndroidTV`, `useWearOS`, `useAndroidAutomotive`, `useAndroidXR`) with intelligent dependency and source file cleanup.
 - **Multi-Language Localization:** Built-in support for English, Japanese, Bengali, and System default.
 
+## Architecture
+
+This project follows **Clean Architecture** principles and a **Modular Multiplatform Layering** strategy:
+
+```text
+├── :apps               # Platform-specific entry points (androidApp, desktopApp, webApp, serverApp)
+├── iosApp              # iOS Swift application wrapper (Xcode project & Compose Multiplatform)
+├── :feature            # Isolated feature modules (auth, home, profile, settings)
+├── :navigation         # Type-safe Navigation3 API and implementation
+└── :core               # Foundation modules
+    ├── :core:designsystem # Material 3 theme, components, and adaptive form-factor UIs
+    ├── :core:common       # Utilities, LanguageManager, and constants
+    ├── :core:model        # Shared domain models & DTOs
+    ├── :core:network      # Ktor HTTP client & API services
+    ├── :core:database     # Room KMP database & DAOs
+    ├── :core:datastore    # Type-safe DataStore preferences
+    ├── :core:platform     # Platform-specific expect/actual abstractions
+    └── :core:testing      # Test harnesses & mocks
+```
+
+- **Dependency Injection:** Powered by [Koin](https://insert-koin.io/).
+- **Navigation:** Powered by Jetpack [Navigation3](https://developer.android.com/guide/navigation).
+- **Local Storage & Database:** Powered by Room KMP and DataStore.
+- **Networking:** Powered by Ktor Client & Server.
+
+For deep architectural guidelines and large-team configuration, read the full [Production Architecture Guide](documentation/architecture/KmpTemplate_Production_Architecture.md).
+
 ## Getting Started
 
 1. Click **"Use this template"** to create a repository under your account.
@@ -56,14 +83,3 @@ Generate unified multi-module API documentation for all shared libraries and cor
 ./gradlew dokkaGenerate
 ```
 View the generated documentation site in **`dokkaDocs/index.html`**.
-
-## Project Structure
-
-- `:apps:androidApp`: Android application module.
-- `:apps:desktopApp`: Desktop application module.
-- `:apps:webApp`: Web application module.
-- `:apps:serverApp`: Ktor backend server with Swagger UI.
-- `:core:designsystem`: Shared Material 3 design system, adaptive UI, and form-factor screens.
-- `:core:common`: Shared utilities and language manager.
-- `:core:model` & `:core:network`: Shared DTOs, models, and Ktor client.
-- `:navigation`: Shared navigation configuration.

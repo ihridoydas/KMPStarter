@@ -10,6 +10,28 @@
 - **স্মার্ট সেটআপ ও ফর্ম-ফ্যাক্টর টগল:** প্রজেক্ট রিনেম করার এবং ফর্ম-ফ্যাক্টর লাইব্রেরি টগল করার স্ক্রিপ্ট (`useAndroidTV`, `useWearOS`, `useAndroidAutomotive`, `useAndroidXR`), যা অটোমেটিক্যালি অদরকারী সোর্স ফাইল ও ডিপেন্ডেন্সি রিমूव করে।
 - **বহুভাষিক লোকলাইজেশন:** ইংরেজি, জাপানিজ, বাঙালি এবং সিস্টেম ডিফল্ট ভাষার বিল্ট-ইন সাপোর্ট।
 
+## আর্কিটেকচার
+
+এই প্রজেক্টটি **Clean Architecture** নীতি এবং **মডিউলভিত্তিক মাল্টিপ্ল্যাটফর্ম লেয়ারিং** কৌশল অনুসরণ করে:
+
+```text
+├── :apps               # প্ল্যাটফর্ম-নির্দিষ্ট এন্ট্রি পয়েন্টসমূহ (androidApp, desktopApp, webApp, serverApp)
+├── iosApp              # আইওএস সুইফট অ্যাপ্লিকেশন র‍্যাপার (Xcode প্রজেক্ট ও Compose Multiplatform)
+├── :feature            # আলাদা ফিচার মডিউলসমূহ (auth, home, profile, settings)
+├── :navigation         # টাইপ-সেফ Navigation3 API এবং ইমপ্লিমেন্টেশন
+└── :core               # ফাউন্ডেশন মডিউলসমূহ
+    ├── :core:designsystem # Material 3 থিম, কম্পোনেন্ট এবং অ্যাডাপ্টিভ ফর্ম-ফ্যাক্টর UI
+    ├── :core:common       # ইউটিলিটি, LanguageManager এবং কনস্ট্যান্টসমূহ
+    ├── :core:model        # শেয়ার্ড ডোমেইন মডেল ও DTO
+    ├── :core:network      # Ktor HTTP ক্লায়েন্ট ও API সার্ভিসসমূহ
+    ├── :core:database     # Room KMP ডাটাবেস ও DAO
+    ├── :core:datastore    # টাইপ-সেফ DataStore প্রিফারেন্স
+    ├── :core:platform     # প্ল্যাটফর্ম-নির্দিষ্ট expect/actual অ্যাবস্ট্রাকশন
+    └── :core:testing      # টেস্ট হার্নেস ও মকসমূহ
+```
+
+বিস্তারিত আর্কিটেকচার গাইডলাইনের জন্য [প্রোডাকশন আর্কিটেকচার গাইড](documentation/architecture/KmpTemplate_Production_Architecture.md) পড়ুন।
+
 ## কিভাবে শুরু করবেন?
 
 ১. আপনার অ্যাকাউন্টে একটি রিপোজিটরি তৈরি করতে **"Use this template"** ক্লিক করুন।
@@ -52,14 +74,3 @@
 ./gradlew dokkaGenerate
 ```
 তৈরিকৃত ডকুমেন্টেশন সাইটটি **`dokkaDocs/index.html`** ফাইলে পাওয়া যাবে।
-
-## প্রজেক্ট স্ট্রাকচার
-
-- `:apps:androidApp`: অ্যান্ড্রয়েড অ্যাপ্লিকেশন মডিউল।
-- `:apps:desktopApp`: ডেস্কটপ অ্যাপ্লিকেশন মডিউল।
-- `:apps:webApp`: ওয়েব অ্যাপ্লিকেশন মডিউল।
-- `:apps:serverApp`: Swagger UI সহ Ktor ব্যাকএন্ড সার্ভার।
-- `:core:designsystem`: শেয়ার্ড Material 3 ডিজাইন সিস্টেম, অ্যাডাপ্টিভ UI এবং ফর্ম-ফ্যাক্টর স্ক্রিনসমূহ।
-- `:core:common`: শেয়ার্ড ইউটিলিটি এবং ল্যাঙ্গুয়েজ ম্যানেজার।
-- `:core:model` & `:core:network`: শেয়ার্ড DTO, মডেল এবং Ktor ক্লা라이언트।
-- `:navigation`: শেয়ার্ড নেভিগেশন কনফিগারেশন।
