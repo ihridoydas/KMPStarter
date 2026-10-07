@@ -30,4 +30,8 @@
     <string name="tablet_details">タブレットビュー: 詳細パネル</string>
     <string name="widescreen_nav">ワイドスクリーンナビゲーション</string>
     <string name="widescreen_desc">ワイドスクリーン、デスクトップ、Android TV、自動車ダッシュボードに最適化されています。</string>
+    <string name="watch">ウォッチ</string>
+    <string name="xr">XR</string>
+    <string name="tv">TV</string>
+    <string name="auto">オート</string>
 </resources>

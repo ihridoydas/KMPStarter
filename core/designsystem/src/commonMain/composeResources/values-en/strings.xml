@@ -30,4 +30,8 @@
     <string name="tablet_details">Tablet View: Details Panel</string>
     <string name="widescreen_nav">Widescreen Navigation</string>
     <string name="widescreen_desc">Optimized for widescreen, desktop, Android TV, and Automotive dashboards.</string>
+    <string name="watch">Watch</string>
+    <string name="xr">XR</string>
+    <string name="tv">TV</string>
+    <string name="auto">Auto</string>
 </resources>

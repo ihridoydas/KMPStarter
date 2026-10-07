@@ -30,4 +30,8 @@
     <string name="tablet_details">ট্যাবলেট ভিউ: বিস্তারিত প্যানেল</string>
     <string name="widescreen_nav">ওয়াইডস্ক্রিন নেভিগেশন</string>
     <string name="widescreen_desc">ওয়াইডস্ক্রিন, ডেস্কটপ, অ্যান্ড্রয়েড টিভি এবং অটোমোটিভ ড্যাশবোর্ডের জন্য অপ্টিমাইজ করা হয়েছে।</string>
+    <string name="watch">ওয়াচ</string>
+    <string name="xr">এক্সআর</string>
+    <string name="tv">টিভি</string>
+    <string name="auto">অটো</string>
 </resources>

@@ -50,8 +50,18 @@ import org.jetbrains.compose.resources.stringResource
 import template.core.designsystem.components.AppBar
 import template.core.designsystem.components.SpatialWrapper
 import template.core.designsystem.generated.resources.Res
+import template.core.designsystem.generated.resources.auto
+import template.core.designsystem.generated.resources.automotive_mode
+import template.core.designsystem.generated.resources.form_factors
 import template.core.designsystem.generated.resources.nice_to_meet_you
+import template.core.designsystem.generated.resources.tv
+import template.core.designsystem.generated.resources.tv_mode
+import template.core.designsystem.generated.resources.watch
+import template.core.designsystem.generated.resources.wear_os_mode
 import template.core.designsystem.generated.resources.welcome
+import template.core.designsystem.generated.resources.xr
+import template.core.designsystem.generated.resources.xr_spatial_mode
+import template.core.designsystem.model.FormFactorMode
 import template.core.designsystem.screens.formfactors.AutomotiveScreen
 import template.core.designsystem.screens.formfactors.TvScreen
 import template.core.designsystem.screens.formfactors.WearOsScreen
@@ -124,10 +134,18 @@ fun ViewScreen(onBackPress: () -> Unit) {
                                     modifier = Modifier.padding(top = 16.dp),
                                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                                 ) {
-                                    Button(onClick = { selectedMode = FormFactorMode.TV }) { Text("TV") }
-                                    Button(onClick = { selectedMode = FormFactorMode.WEAR_OS }) { Text("Watch") }
-                                    Button(onClick = { selectedMode = FormFactorMode.AUTOMOTIVE }) { Text("Auto") }
-                                    Button(onClick = { selectedMode = FormFactorMode.XR }) { Text("XR") }
+                                    Button(onClick = { selectedMode = FormFactorMode.TV }) {
+                                        Text(stringResource(Res.string.tv))
+                                    }
+                                    Button(onClick = { selectedMode = FormFactorMode.WEAR_OS }) {
+                                        Text(stringResource(Res.string.watch))
+                                    }
+                                    Button(onClick = { selectedMode = FormFactorMode.AUTOMOTIVE }) {
+                                        Text(stringResource(Res.string.auto))
+                                    }
+                                    Button(onClick = { selectedMode = FormFactorMode.XR }) {
+                                        Text(stringResource(Res.string.xr))
+                                    }
                                 }
                             }
                         }
@@ -153,10 +171,18 @@ fun ViewScreen(onBackPress: () -> Unit) {
                                         modifier = Modifier.padding(bottom = 12.dp),
                                     )
                                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                        Button(onClick = { selectedMode = FormFactorMode.TV }) { Text("TV") }
-                                        Button(onClick = { selectedMode = FormFactorMode.WEAR_OS }) { Text("Watch") }
-                                        Button(onClick = { selectedMode = FormFactorMode.AUTOMOTIVE }) { Text("Auto") }
-                                        Button(onClick = { selectedMode = FormFactorMode.XR }) { Text("XR") }
+                                        Button(onClick = { selectedMode = FormFactorMode.TV }) {
+                                            Text(stringResource(Res.string.tv))
+                                        }
+                                        Button(onClick = { selectedMode = FormFactorMode.WEAR_OS }) {
+                                            Text(stringResource(Res.string.watch))
+                                        }
+                                        Button(onClick = { selectedMode = FormFactorMode.AUTOMOTIVE }) {
+                                            Text(stringResource(Res.string.auto))
+                                        }
+                                        Button(onClick = { selectedMode = FormFactorMode.XR }) {
+                                            Text(stringResource(Res.string.xr))
+                                        }
                                     }
                                 }
                             }
@@ -175,19 +201,30 @@ fun ViewScreen(onBackPress: () -> Unit) {
                                     shape = MaterialTheme.shapes.medium,
                                 ) {
                                     Column(modifier = Modifier.padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                                        Text("Form Factors", style = MaterialTheme.typography.titleMedium)
+                                        Text(
+                                            stringResource(Res.string.form_factors),
+                                            style = MaterialTheme.typography.titleMedium,
+                                        )
                                         Button(onClick = {
                                             selectedMode = FormFactorMode.TV
-                                        }, modifier = Modifier.fillMaxWidth()) { Text("TV Mode") }
+                                        }, modifier = Modifier.fillMaxWidth()) {
+                                            Text(stringResource(Res.string.tv_mode))
+                                        }
                                         Button(onClick = {
                                             selectedMode = FormFactorMode.AUTOMOTIVE
-                                        }, modifier = Modifier.fillMaxWidth()) { Text("Automotive Mode") }
+                                        }, modifier = Modifier.fillMaxWidth()) {
+                                            Text(stringResource(Res.string.automotive_mode))
+                                        }
                                         Button(onClick = {
                                             selectedMode = FormFactorMode.WEAR_OS
-                                        }, modifier = Modifier.fillMaxWidth()) { Text("Wear OS Mode") }
+                                        }, modifier = Modifier.fillMaxWidth()) {
+                                            Text(stringResource(Res.string.wear_os_mode))
+                                        }
                                         Button(onClick = {
                                             selectedMode = FormFactorMode.XR
-                                        }, modifier = Modifier.fillMaxWidth()) { Text("XR Spatial Mode") }
+                                        }, modifier = Modifier.fillMaxWidth()) {
+                                            Text(stringResource(Res.string.xr_spatial_mode))
+                                        }
                                     }
                                 }
                                 Column(
