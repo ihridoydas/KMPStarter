@@ -29,14 +29,16 @@ apply(from = "buildscripts/versionsplugin.gradle")
 apply(from = "spotless.gradle")
 
 subprojects {
-    apply(plugin = "org.jetbrains.dokka")
-    
-    extensions.configure<org.jetbrains.dokka.gradle.DokkaExtension>("dokka") {
-        dokkaPublications.configureEach {
-            outputDirectory.set(layout.buildDirectory.dir("docs/${project.name}"))
-        }
-        dokkaSourceSets.configureEach {
-            enableAndroidDocumentationLink.set(true)
+    if (!project.path.startsWith(":apps")) {
+        pluginManager.apply("org.jetbrains.dokka")
+        
+        extensions.configure<org.jetbrains.dokka.gradle.DokkaExtension>("dokka") {
+            dokkaPublications.configureEach {
+                outputDirectory.set(layout.buildDirectory.dir("docs/${project.name}"))
+            }
+            dokkaSourceSets.configureEach {
+                enableAndroidDocumentationLink.set(true)
+            }
         }
     }
 
