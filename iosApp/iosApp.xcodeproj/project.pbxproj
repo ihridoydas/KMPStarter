@@ -9,15 +9,15 @@
 /* Begin PBXBuildFile section */
 		ED7B944F2C00742100858C73 /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7B944E2C00742100858C73 /* iOSApp.swift */; };
 		ED7B94512C00742100858C73 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7B94502C00742100858C73 /* ContentView.swift */; };
-		ED7B945A2C007B0000858C73 /* common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7B94592C007B0000858C73 /* common.framework */; };
+		ED7B945A2C007B0000858C73 /* navigationImpl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7B94592C007B0000858C73 /* navigationImpl.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ED7B944B2C00742100858C73 /* iosApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED7B944B2C00742100858C73 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7B944E2C00742100858C73 /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		ED7B94502C00742100858C73 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = source.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ED7B94522C00742100858C73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED7B94592C007B0000858C73 /* common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = common.framework; path = common.framework; sourceTree = "<group>"; };
+		ED7B94592C007B0000858C73 /* navigationImpl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = navigationImpl.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -25,7 +25,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED7B945A2C007B0000858C73 /* common.framework in Frameworks */,
+				ED7B945A2C007B0000858C73 /* navigationImpl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,7 +36,7 @@
 			isa = PBXGroup;
 			children = (
 				ED7B944D2C00742100858C73 /* iosApp */,
-				ED7B94592C007B0000858C73 /* common.framework */,
+				ED7B94592C007B0000858C73 /* navigationImpl.framework */,
 				ED7B944C2C00742100858C73 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,7 +88,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 2700;
 				TargetAttributes = {
 					ED7B944A2C00742100858C73 = {
 						CreatedOnToolsVersion = 15.3;
@@ -140,7 +140,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"YES\" = \"$OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED\" ]; then\n  echo \"Skipping Gradle build task invocation due to OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED environment variable set to \\\"YES\\\"\"\n  exit 0\nfi\ncd \"$SRCROOT/..\"\n./gradlew :common:embedAndSignAppleFrameworkForXcode";
+			shellScript = "if [ \"YES\" = \"$OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED\" ]; then\n  echo \"Skipping Gradle build task invocation due to OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED environment variable set to \\\"YES\\\"\"\n  exit 0\nfi\ncd \"$SRCROOT/..\"\n./gradlew :navigation:impl:embedAndSignAppleFrameworkForXcode";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -219,6 +219,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -279,6 +280,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -299,7 +301,7 @@
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../common/build/xcode-frameworks/$(CONFIGURATION)/**",
+					"$(SRCROOT)/../navigation/impl/build/xcode-frameworks/$(CONFIGURATION)/**",
 				);
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = iosApp/Info.plist;
@@ -329,7 +331,7 @@
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../common/build/xcode-frameworks/$(CONFIGURATION)/**",
+					"$(SRCROOT)/../navigation/impl/build/xcode-frameworks/$(CONFIGURATION)/**",
 				);
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = iosApp/Info.plist;

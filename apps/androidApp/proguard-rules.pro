@@ -1,0 +1,3 @@
+-dontwarn android.extensions.xr.**
+-dontwarn com.google.androidxr.**
+-dontwarn com.google.ar.imp.view.splitengine.**

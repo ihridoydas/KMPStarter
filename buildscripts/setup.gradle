@@ -9,10 +9,12 @@ import java.util.regex.Matcher
  * Then run: ./gradlew renameTemplate
  */
 def renameConfig = [
+        // DO NOT CHANGE THESE
         templateName             : "template",
         templateAppId            : "template.app.id",
         templateMaterialThemeName: "TemplateTheme",
 
+        // MODIFY THE BELOW PROPERTIES
         newTemplateName          : "MyAwesomeApp",
         newTemplateAppId         : "com.example.app",
         newMaterialThemeName     : "AppTheme",
@@ -30,48 +32,36 @@ def renameConfig = [
  * AUTO FIX: PROJECT PATH CHANGE CLEAN
  * --------------------------------------------
  */
-def projectRootMarker = file("${rootDir}/.projectRootPath")
-def currentPath = rootDir.absolutePath
-
 def performDeepClean = {
-    println "⚠️ Performing deep clean of stale Gradle caches and build artifacts..."
-    
-    // Stop Gradle daemons to release file locks
+    println "⚠️ Performing deep clean of build artifacts..."
+
+    // Delete root build folder
     try {
-        exec { commandLine "./gradlew", "--stop" }
+        ant.delete(dir: "${rootDir}/build")
     } catch (Exception e) {
-        println "  (Could not stop daemons automatically, proceeding...)"
+        println "  (Could not remove ${rootDir}/build: ${e.message})"
     }
 
-    // Delete root caches and build
-    ant.delete(dir: "${rootDir}/.gradle")
-    ant.delete(dir: "${rootDir}/build")
-
-    // Deep clean: find and delete all 'build', '.kotlin', and module '.gradle' folders
+    // Deep clean: find and delete all 'build' and '.kotlin' folders
     def cleanRecursive
     cleanRecursive = { File dir ->
         if (!dir.exists()) return
         dir.eachDir { subDir ->
-            if (subDir.name == "build" || subDir.name == ".kotlin" || subDir.name == ".gradle") {
+            if (subDir.name == "build" || subDir.name == ".kotlin") {
                 println "  - Removing: ${subDir}"
-                ant.delete(dir: subDir)
-            } else if (subDir.name != ".git" && subDir.name != ".idea") {
+                try {
+                    ant.delete(dir: subDir)
+                } catch (Exception e) {
+                    println "  (Could not remove ${subDir}: ${e.message})"
+                }
+            } else if (subDir.name != ".git" && subDir.name != ".idea" && subDir.name != ".gradle") {
                 cleanRecursive(subDir)
             }
         }
     }
     cleanRecursive(file(rootDir))
-    println "✅ Deep clean completed. Please re-sync the project."
+    println "✅ Deep clean completed."
 }
-
-if (projectRootMarker.exists()) {
-    def oldPath = projectRootMarker.text.trim()
-    if (oldPath != currentPath) {
-        println "⚠️ Project folder moved from ${oldPath} to ${currentPath}"
-        performDeepClean()
-    }
-}
-projectRootMarker.text = currentPath
 
 tasks.register("deepClean") {
     group = "Template Setup"
@@ -84,7 +74,7 @@ tasks.register("deepClean") {
 tasks.register("checkProjectPathChange") {
     group = "Template Setup"
     doLast {
-        println "✅ Project path is up to date: ${currentPath}"
+        println "✅ Project path is up to date: ${rootDir.absolutePath}"
     }
 }
 
@@ -112,15 +102,18 @@ static def removeTextFromFile(fileName, text) {
     }
 }
 
-def modules = project.subprojects.collect { it.name }
+def allSubprojects = project.subprojects
 
 /**
  * --------------------------------------------
- * RENAME PACKAGE (KMP AWARE)
+ * RENAME PACKAGE (KMP AWARE - MULTI-MODULE)
  * --------------------------------------------
  */
-modules.each { module ->
-    tasks.register("renameAppPackage${module}") {
+def renamePackageTasks = []
+allSubprojects.each { subproj ->
+    def taskName = "renameAppPackage_${subproj.path.replace(':', '_')}"
+    renamePackageTasks << taskName
+    tasks.register(taskName) {
         doLast {
             def templateName = renameConfig.templateName
             def newAppId = renameConfig.newTemplateAppId
@@ -130,13 +123,12 @@ modules.each { module ->
             def sourceSets = [
                     "commonMain", "androidMain", "iosMain", "jvmMain", "wasmJsMain",
                     "commonTest", "androidTest", "iosTest", "jvmTest", "wasmJsTest",
-                    "androidUnitTest", 
-                    "main", "test"
+                    "androidUnitTest", "main", "test"
             ]
 
             sourceSets.each { sourceSet ->
                 ["kotlin", "java"].each { lang ->
-                    def srcDir = file("${rootDir}/${module}/src/${sourceSet}/${lang}")
+                    def srcDir = file("${subproj.projectDir}/src/${sourceSet}/${lang}")
                     if (srcDir.exists()) {
                         // 1. First, replace all package/import strings in ALL files in this source set
                         srcDir.eachFileRecurse { file ->
@@ -155,7 +147,7 @@ modules.each { module ->
                         // 2. Then, move the 'template' directory to the new package structure
                         def oldPkgDir = file("${srcDir}/${templateName}")
                         if (oldPkgDir.exists()) {
-                            println("📦 Relocating ${module} ${sourceSet}/${lang} ${templateName} -> ${newDir}")
+                            println("📦 Relocating ${subproj.path} ${sourceSet}/${lang} ${templateName} -> ${newDir}")
                             def newPkgDir = file("${srcDir}/${newDir}")
                             
                             // Ensure the parent directory exists
@@ -180,9 +172,9 @@ modules.each { module ->
 tasks.register('replaceTemplateReferences') {
     group "Template Setup"
     doLast {
-        modules.each { module ->
+        allSubprojects.each { subproj ->
             // Manifests
-            def manifests = fileTree(dir: "${rootDir}/${module}/src", include: "**/AndroidManifest.xml")
+            def manifests = fileTree(dir: "${subproj.projectDir}/src", include: "**/AndroidManifest.xml")
             manifests.each { manifest ->
                 println "📜 Updating Manifest: ${manifest.name}"
                 replaceTextInFile(manifest.absolutePath, "${renameConfig.templateName}.MainActivity", "${renameConfig.newTemplateAppId}.MainActivity")
@@ -192,7 +184,7 @@ tasks.register('replaceTemplateReferences') {
             }
 
             // build.gradle.kts
-            def moduleGradle = new File("${rootDir}/${module}/build.gradle.kts")
+            def moduleGradle = new File(subproj.projectDir, "build.gradle.kts")
             if (moduleGradle.exists()) {
                 def text = moduleGradle.text
                 text = text.replaceAll(/namespace\s*=\s*"${renameConfig.templateName}"/, "namespace = \"${renameConfig.newTemplateAppId}\"")
@@ -216,12 +208,13 @@ tasks.register('replaceTemplateReferences') {
         }
 
         // Extra UI and Resources
-        replaceTextInFile("${rootDir}/app/src/main/res/values/strings.xml", ">KMPStarter<", ">${renameConfig.newTemplateName}<")
-        replaceTextInFile("${rootDir}/common/src/wasmJsMain/resources/index.html", "<title>KMPStarter</title>", "<title>${renameConfig.newTemplateName}</title>")
+        replaceTextInFile("${rootDir}/apps/androidApp/src/main/res/values/strings.xml", ">KMPStarter<", ">${renameConfig.newTemplateName}<")
+        replaceTextInFile("${rootDir}/apps/webApp/src/wasmJsMain/resources/index.html", "<title>KMPStarter</title>", "<title>${renameConfig.newTemplateName}</title>")
+        replaceTextInFile("${rootDir}/core/designsystem/src/commonMain/composeResources/values/strings.xml", ">KMPStarter<", ">${renameConfig.newTemplateName}<")
         
-        // Catch all remaining "template." strings in Kotlin/Java files (e.g. fully qualified names in code)
+        // Catch all remaining "template." strings in Kotlin/Java files
         fileTree(dir: rootDir, include: ["**/*.kt", "**/*.java", "**/*.kts"]).each { file ->
-            if (file.path.contains(".gradle") || file.path.contains(".idea") || file.path.contains("buildscripts")) return
+            if (file.path.contains(".gradle") || file.path.contains(".idea") || file.path.contains("buildscripts") || file.path.contains("build")) return
             replaceTextInFile(file.absolutePath, "${renameConfig.templateName}.", "${renameConfig.newTemplateAppId}.")
         }
 
@@ -270,10 +263,14 @@ tasks.register('applyAppIcons') {
             if (env == "debug") androidTargetDir = "debug"
             if (env == "stg") androidTargetDir = "staging"
             
-            println "🤖 Updating Android icons (src/${androidTargetDir})..."
+            def androidResDir = file("${rootDir}/apps/androidApp/src/${androidTargetDir}/res")
+            if (!androidResDir.exists()) {
+                androidResDir = file("${rootDir}/app/src/${androidTargetDir}/res")
+            }
+            println "🤖 Updating Android icons (${androidResDir})..."
             copy {
                 from androidSource
-                into "${rootDir}/app/src/${androidTargetDir}/res"
+                into androidResDir
             }
         }
 
@@ -290,20 +287,28 @@ tasks.register('applyAppIcons') {
         // 3. Desktop
         def desktopSource = file("${brandingDir}/desktop")
         if (desktopSource.exists()) {
-            println "💻 Updating Desktop icons..."
+            def desktopResDir = file("${rootDir}/apps/desktopApp/src/jvmMain/resources")
+            if (!desktopResDir.exists()) {
+                desktopResDir = file("${rootDir}/common/src/jvmMain/resources")
+            }
+            println "💻 Updating Desktop icons (${desktopResDir})..."
             copy {
                 from desktopSource
-                into "${rootDir}/common/src/jvmMain/resources"
+                into desktopResDir
             }
         }
 
         // 4. Web
         def webSource = file("${brandingDir}/web")
         if (webSource.exists()) {
-            println "🌐 Updating Web icons..."
+            def webResDir = file("${rootDir}/apps/webApp/src/wasmJsMain/resources")
+            if (!webResDir.exists()) {
+                webResDir = file("${rootDir}/common/src/wasmJsMain/resources")
+            }
+            println "🌐 Updating Web icons (${webResDir})..."
             copy {
                 from webSource
-                into "${rootDir}/common/src/wasmJsMain/resources"
+                into webResDir
             }
         }
         
@@ -322,7 +327,7 @@ tasks.register('keepOrRemoveDependencies') {
         def filesToClean = []
         filesToClean << "${rootDir}/build.gradle.kts"
         filesToClean << "${rootDir}/gradle/libs.versions.toml"
-        modules.each { filesToClean << "${rootDir}/${it}/build.gradle.kts" }
+        allSubprojects.each { filesToClean << "${it.projectDir}/build.gradle.kts" }
 
         filesToClean.each { fileName ->
             if (!renameConfig.useKoin) removeTextFromFile(fileName, "koin")
@@ -354,7 +359,7 @@ tasks.register('renameTemplate') {
     dependsOn(
             deepClean,
             checkProjectPathChange,
-            modules.collect { tasks.named("renameAppPackage${it}") },
+            renamePackageTasks.collect { tasks.named(it) },
             keepOrRemoveDependencies,
             replaceTemplateReferences,
             "cleanupSetup"

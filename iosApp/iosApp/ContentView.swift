@@ -1,5 +1,5 @@
 import SwiftUI
-import common
+import navigationImpl
 
 struct ComposeView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
